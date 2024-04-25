@@ -54,13 +54,16 @@ public class Login extends JFrame implements ActionListener {
 
         setSize(1000, 500);
         setLocation(200, 150);
+//        setUndecorated(true);
         setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == Next){
-
+            String name = text.getText();
+            setVisible(false);
+            new Rules(name);
         } else if (e.getSource() == back) {
             System.exit(50);
         }
