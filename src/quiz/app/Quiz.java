@@ -47,14 +47,15 @@ public class Quiz extends JFrame implements ActionListener {
 //        img.setBounds(0,0,1280, 300);
 //        add(img);
 
-//        imageLabel = new JLabel(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
-//        add(imageLabel);
-        ImageIcon hang1 = new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex+1]));
-        Image hang = hang1.getImage().getScaledInstance(450,300,Image.SCALE_DEFAULT);
-        ImageIcon hang2 = new ImageIcon(hang);
-        JLabel imageLabel = new JLabel(hang2);
+        imageLabel = new JLabel(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
         imageLabel.setBounds(0,0,1280,300);
         add(imageLabel);
+//        ImageIcon hang1 = new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex+1]));
+//        Image hang = hang1.getImage().getScaledInstance(450,300,Image.SCALE_DEFAULT);
+//        ImageIcon hang2 = new ImageIcon(hang);
+//        JLabel imageLabel = new JLabel(hang2);
+//        imageLabel.setBounds(0,0,1280,300);
+//        add(imageLabel);
 
         qno = new JLabel();
         qno.setBounds(80,400,50,30);
@@ -214,6 +215,13 @@ public class Quiz extends JFrame implements ActionListener {
             ans_given = 1;
             if (group.getSelection() == null){
                 useranswers[count][0] = "";
+                // Hangman funcions
+                currentImageIndex++;
+                if (currentImageIndex >= imagePaths.length) {
+                    currentImageIndex = 0;
+                }
+                imageLabel.setIcon(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
+                // =======
             }else {
                 useranswers[count][0] = group.getSelection().getActionCommand();
             }
@@ -246,6 +254,13 @@ public class Quiz extends JFrame implements ActionListener {
             ans_given = 1;
             if (group.getSelection() == null){
                 useranswers[count][0] = "";
+                // Hangman funcion
+                currentImageIndex++;
+                if (currentImageIndex >= imagePaths.length) {
+                    currentImageIndex = 0;
+                }
+                imageLabel.setIcon(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
+                // =======
             }else {
                 useranswers[count][0] = group.getSelection().getActionCommand();
             }
