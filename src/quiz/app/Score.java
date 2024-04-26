@@ -16,18 +16,18 @@ public class Score extends JFrame {
         image.setBounds(60,200,200,150);
         add(image);
 
-        JLabel heading = new JLabel("Thank You"+ name +"for Playing QUIZ TEST");
-        heading.setBounds(100,80,700,30);
+        JLabel heading = new JLabel("Thank You "+ name +" for Playing");
+        heading.setBounds(100,100,700,30);
         heading.setFont(new Font("Tahoma",Font.BOLD, 26));
         add(heading);
 
         JLabel Score = new JLabel("Your score is "+ score);
-        Score.setBounds(350,200,300,30);
+        Score.setBounds(350,230,300,30);
         Score.setFont(new Font("Tahoma",Font.BOLD, 26));
         add(Score);
 
         JButton exit = new JButton("EXIT");
-        exit.setBounds(380,270,120,30);
+        exit.setBounds(380,300,120,30);
         exit.setBackground(new Color(22,99,54));
         exit.setForeground(Color.WHITE);
         add(exit);
@@ -43,8 +43,8 @@ public class Score extends JFrame {
         Image ii2 = ii1.getImage().getScaledInstance(750,550, Image.SCALE_DEFAULT);
         ImageIcon ii3 = new ImageIcon(ii2);
         JLabel iimage = new JLabel(ii3);
-        iimage.setBounds(60,200,750,550);
-        add(image);
+        iimage.setBounds(-10,-15,750,550);
+        add(iimage);
 
         setSize(750, 550);
         setLocation(400,150);

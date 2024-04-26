@@ -15,26 +15,23 @@ public class Rules extends JFrame implements ActionListener {
 
         this.name = name;
 
-        JLabel heading = new JLabel("Welcome "+ name +" to QUIZ TEST");
-        heading.setBounds(150,100,700,30);
+        JLabel heading = new JLabel("<html>"+"Hello "+ name +"!" +"<br>"+ "Welcome to Syntax Showdown"+"<html>");
+        heading.setBounds(80,100,700,80);
         heading.setFont(new Font("Viner Hand ITC", Font.BOLD, 28));
         heading.setForeground(new Color(22,99,54));
         add(heading);
 
-        JLabel rules = new JLabel();
+        JLabel rules = new JLabel("<html>"+
+                    "1. Participation in the quiz is free and open to all." + "<br><br>" +
+                    "2. There are a total (not sure yet)numbers of questions. " + "<br><br>" +
+                    "3. You only have 15 seconds to answer the question." + "<br><br>" +
+                    "4. You lose 1 part of your man every time you skip." + "<br><br>" +
+                    "5. You get 10 points on every right ans." + "<br><br>" +
+                    "6. You can't submit before commiting all ques." + "<br><br>" +
+                "<html>");
         rules.setBounds(70,150,700,350);
         rules.setFont(new Font("Tohama", Font.PLAIN, 16));
         rules.setForeground(new Color(22,99,54));
-        rules.setText(
-                "<html>"+
-                        "1. Participation in the quiz is free and open to all persons above 18 years old." + "<br><br>" +
-                        "2. There are a total 10 questions. " + "<br><br>" +
-                        "3. You only have 15 seconds to answer the question." + "<br><br>" +
-                        "4. No cell phones or other secondary devices in the room or test area." + "<br><br>" +
-                        "5. No talking." + "<br><br>" +
-                        "6. No one else can be in the room with you." + "<br><br>" +
-                "<html>"
-        );
         add(rules);
 
         back = new JButton("Back");
