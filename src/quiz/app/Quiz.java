@@ -8,9 +8,9 @@ import java.util.prefs.AbstractPreferences;
 
 public class Quiz extends JFrame implements ActionListener {
 
-    String questions[][] = new String[10][5];
-    String answers[][] = new String[10][2];
-    String useranswers[][] = new String[10][1];
+    String[][] questions = new String[10][5];
+    String[][] answers = new String[10][2];
+    String[][] useranswers = new String[10][1];
 
     JLabel qno, question;
     JRadioButton opt1, opt2, opt3, opt4;
@@ -24,6 +24,8 @@ public class Quiz extends JFrame implements ActionListener {
     String name;
 
     Quiz(String name){
+        super("Syntax Showdown : Hangman Fusion");
+
         this.name = name;
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/quiz.png"));
@@ -172,7 +174,10 @@ public class Quiz extends JFrame implements ActionListener {
         setSize(1280, 720);
         setLocation(40,10);
         getContentPane().setBackground(Color.WHITE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setLayout(null);
+        setResizable(false);
 //        setUndecorated(true);
         setVisible(true);
     }
@@ -320,6 +325,6 @@ public class Quiz extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Quiz("User");
+        new Quiz("Chief");
     }
 }

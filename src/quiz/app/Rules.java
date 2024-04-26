@@ -11,9 +11,11 @@ public class Rules extends JFrame implements ActionListener {
     String name;
 
     Rules(String name){
+        super("Syntax Showdown : Hangman Fusion");
+
         this.name = name;
 
-        JLabel heading = new JLabel("Welcome"+ name +"to QUIZ TEST");
+        JLabel heading = new JLabel("Welcome "+ name +" to QUIZ TEST");
         heading.setBounds(150,100,700,30);
         heading.setFont(new Font("Viner Hand ITC", Font.BOLD, 28));
         heading.setForeground(new Color(22,99,54));
@@ -58,7 +60,10 @@ public class Rules extends JFrame implements ActionListener {
 
         setSize(800, 650);
         setLocation(280, 60);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setLayout(null);
+        setResizable(false);
 //        setUndecorated(true);
         setVisible(true);
     }
@@ -75,6 +80,6 @@ public class Rules extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Rules("User");
+        new Rules("Chief");
     }
 }

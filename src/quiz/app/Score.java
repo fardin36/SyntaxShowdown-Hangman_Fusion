@@ -5,7 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class Score extends JFrame {
+
     Score(String name, int score){
+        super("Syntax Showdown : Hangman Fusion");
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/score.png"));
         Image i2 = i1.getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT);
@@ -46,12 +48,15 @@ public class Score extends JFrame {
 
         setSize(750, 550);
         setLocation(400,150);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setLayout(null);
+        setResizable(false);
 //        setUndecorated(true);
         setVisible(true);
     }
 
     public static void main(String[] args) {
-        new Score("User",0);
+        new Score("Chief",0);
     }
 }

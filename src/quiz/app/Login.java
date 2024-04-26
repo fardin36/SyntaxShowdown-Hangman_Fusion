@@ -11,6 +11,7 @@ public class Login extends JFrame implements ActionListener {
     JButton Next, back;
 
     Login(){
+        super("Syntax Showdown : Hangman Fusion");
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
@@ -54,6 +55,10 @@ public class Login extends JFrame implements ActionListener {
 
         setSize(1000, 500);
         setLocation(200, 150);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(null);
+        setResizable(false);
 //        setUndecorated(true);
         setVisible(true);
     }
