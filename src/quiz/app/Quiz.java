@@ -12,28 +12,49 @@ public class Quiz extends JFrame implements ActionListener {
     String[][] answers = new String[10][2];
     String[][] useranswers = new String[10][1];
 
-    JLabel qno, question;
+    JLabel qno, question,
+                        hangmanImage,
+                        imageLabel;
     JRadioButton opt1, opt2, opt3, opt4;
     ButtonGroup group;
-    JButton next, submit, help;
+    JButton next, submit, help, changeButton;
 
     public static int timer = 15;
     public static int ans_given = 0;
     public static int count = 0;
     public static int score = 0;
     String name;
+    String hangImage = "hangs/1.png";
+
+
+    private static final String[] imagePaths = {
+            "resources/image1.png", "resources/image2.png", "resources/image3.png", "resources/image4.png",
+            "resources/image5.png", "resources/image6.png", "resources/image7.png"
+    };
+    private int currentImageIndex = 0;
+//    private JLabel imageLabel;
+
 
     Quiz(String name){
         super("Syntax Showdown : Hangman Fusion");
 
         this.name = name;
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/quiz.png"));
-        Image i = i1.getImage().getScaledInstance(1280,300,Image.SCALE_DEFAULT);
-        ImageIcon i2 = new ImageIcon(i);
-        JLabel img = new JLabel(i2);
-        img.setBounds(0,0,1280, 300);
-        add(img);
+//        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/quiz.png"));
+//        Image i = i1.getImage().getScaledInstance(1280,300,Image.SCALE_DEFAULT);
+//        ImageIcon i2 = new ImageIcon(i);
+//        JLabel img = new JLabel(i2);
+//        img.setBounds(0,0,1280, 300);
+//        add(img);
+
+//        imageLabel = new JLabel(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
+//        add(imageLabel);
+        ImageIcon hang1 = new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex+1]));
+        Image hang = hang1.getImage().getScaledInstance(450,300,Image.SCALE_DEFAULT);
+        ImageIcon hang2 = new ImageIcon(hang);
+        JLabel imageLabel = new JLabel(hang2);
+        imageLabel.setBounds(0,0,1280,300);
+        add(imageLabel);
 
         qno = new JLabel();
         qno.setBounds(80,400,50,30);
