@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.prefs.AbstractPreferences;
+import quiz.app.HangmanUtils;
 
 public class Quiz extends JFrame implements ActionListener {
 
@@ -12,9 +12,7 @@ public class Quiz extends JFrame implements ActionListener {
     String[][] answers = new String[10][2];
     String[][] useranswers = new String[10][1];
 
-    JLabel qno, question,
-                        hangmanImage,
-                        imageLabel;
+    JLabel qno, question;
     JRadioButton opt1, opt2, opt3, opt4;
     ButtonGroup group;
     JButton next, submit, help, changeButton;
@@ -27,11 +25,11 @@ public class Quiz extends JFrame implements ActionListener {
     String hangImage = "hangs/1.png";
 
 
-    private static final String[] imagePaths = {
-            "resources/image1.png", "resources/image2.png", "resources/image3.png", "resources/image4.png",
-            "resources/image5.png", "resources/image6.png", "resources/image7.png"
-    };
-    private int currentImageIndex = 0;
+//    private static final String[] imagePaths = {
+//            "resources/image1.png", "resources/image2.png", "resources/image3.png", "resources/image4.png",
+//            "resources/image5.png", "resources/image6.png", "resources/image7.png"
+//    };
+//    private int currentImageIndex = 0;
 //    private JLabel imageLabel;
 
 
@@ -47,15 +45,9 @@ public class Quiz extends JFrame implements ActionListener {
 //        img.setBounds(0,0,1280, 300);
 //        add(img);
 
-        imageLabel = new JLabel(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
-        imageLabel.setBounds(0,0,1280,300);
-        add(imageLabel);
-//        ImageIcon hang1 = new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex+1]));
-//        Image hang = hang1.getImage().getScaledInstance(450,300,Image.SCALE_DEFAULT);
-//        ImageIcon hang2 = new ImageIcon(hang);
-//        JLabel imageLabel = new JLabel(hang2);
-//        imageLabel.setBounds(0,0,1280,300);
-//        add(imageLabel);
+        // adding Hangman image initially
+        add(HangmanUtils.addHang());
+        // ==========
 
         qno = new JLabel();
         qno.setBounds(80,400,50,30);
@@ -216,11 +208,7 @@ public class Quiz extends JFrame implements ActionListener {
             if (group.getSelection() == null){
                 useranswers[count][0] = "";
                 // Hangman funcions
-                currentImageIndex++;
-                if (currentImageIndex >= imagePaths.length) {
-                    currentImageIndex = 0;
-                }
-                imageLabel.setIcon(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
+                HangmanUtils.updateImage();
                 // =======
             }else {
                 useranswers[count][0] = group.getSelection().getActionCommand();
@@ -255,11 +243,7 @@ public class Quiz extends JFrame implements ActionListener {
             if (group.getSelection() == null){
                 useranswers[count][0] = "";
                 // Hangman funcion
-                currentImageIndex++;
-                if (currentImageIndex >= imagePaths.length) {
-                    currentImageIndex = 0;
-                }
-                imageLabel.setIcon(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
+                HangmanUtils.updateImage();
                 // =======
             }else {
                 useranswers[count][0] = group.getSelection().getActionCommand();
