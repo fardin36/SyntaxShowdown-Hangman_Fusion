@@ -5,7 +5,6 @@ public class Questions {
     public static String[][] answers = new String[10][2];
     public static String[][] useranswers = new String[10][1];
 
-
     static {
         questions[0][0] = "Number of primitive data types in Java are.?";
         questions[0][1] = "6";
