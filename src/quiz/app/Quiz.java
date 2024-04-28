@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import quiz.app.HangmanUtils;
-import quiz.app.Questions;
+import database.RetrieveData;
 
 public class Quiz extends JFrame implements ActionListener {
 
@@ -20,12 +20,15 @@ public class Quiz extends JFrame implements ActionListener {
     public static int count = 0;
     public static int score = 0;
     String name;
-    String hangImage = "hangs/1.png";
+    String[][] questions;
+    int[] answers;
 
     Quiz(String name) {
         super("Syntax Showdown : Hangman Fusion");
         this.name = name;
-
+        RetrieveData retrieveData = new RetrieveData(15);
+        questions = retrieveData.getQuestions();
+        answers = retrieveData.getAnswers();
         /*
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/quiz.png"));
         Image i = i1.getImage().getScaledInstance(1280,300,Image.SCALE_DEFAULT);
@@ -123,22 +126,22 @@ public class Quiz extends JFrame implements ActionListener {
             opt3.setEnabled(true);
             opt4.setEnabled(true);
             ans_given = 1;
-            if (group.getSelection() == null) {
-                Questions.useranswers[count][0] = "";
-                // Hangman funcions
+            if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
+//                useranswers[count][0] = "";
+                score += 10;
+                // Hangman Utils
                 HangmanUtils.updateImage();
-                // =======
             } else {
-                Questions.useranswers[count][0] = group.getSelection().getActionCommand();
+//                Questions.useranswers[count][0] = group.getSelection().getActionCommand();
             }
 
-            for (int i = 0; i < Questions.useranswers.length; i++) {
-                if (Questions.useranswers[count][0].equals(Questions.answers[i][1])) {
-                    score += 10;
-                } else {
-                    score += 0;
-                }
-            }
+//            for (int i = 0; i < Questions.useranswers.length; i++) {
+//                if (Questions.useranswers[count][0].equals(Questions.answers[i][1])) {
+//                    score += 10;
+//                } else {
+//                    score += 0;
+//                }
+//            }
 
             if (count == 8) {
                 next.setEnabled(false);
@@ -158,21 +161,23 @@ public class Quiz extends JFrame implements ActionListener {
             help.setEnabled(false);
         } else if (e.getSource() == submit) {
             ans_given = 1;
-            if (group.getSelection() == null) {
-                Questions.useranswers[count][0] = "";
+            if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
+//                Questions.useranswers[count][0] = "";
+                score+=10;
                 // Hangman funcion
                 HangmanUtils.updateImage();
-                // =======
             } else {
-                Questions.useranswers[count][0] = group.getSelection().getActionCommand();
+//                Questions.useranswers[count][0] = group.getSelection().getActionCommand();
             }
-            for (int i = 0; i < Questions.useranswers.length; i++) {
-                if (Questions.useranswers[count][0].equals(Questions.answers[i][1])) {
-                    score += 10;
-                } else {
-                    score += 0;
-                }
-            }
+
+//            for (int i = 0; i < Questions.useranswers.length; i++) {
+//                if (Questions.useranswers[count][0].equals(Questions.answers[i][1])) {
+//                    score += 10;
+//                } else {
+//                    score += 0;
+//                }
+//            }
+
             count = 0;
             setVisible(false);
             new Score(name, score);
@@ -214,28 +219,30 @@ public class Quiz extends JFrame implements ActionListener {
                 submit.setEnabled(true);
             }
             if (count == 9) {
-                if (group.getSelection() == null) {
-                    Questions.useranswers[count][0] = "";
+                if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
+//                    Questions.useranswers[count][0] = "";
+                    score+=10;
                 } else {
-                    Questions.useranswers[count][0] = group.getSelection().getActionCommand();
+//                    Questions.useranswers[count][0] = group.getSelection().getActionCommand();
                 }
 
-                for (int i = 0; i < Questions.useranswers.length; i++) {
-                    if (Questions.useranswers[i][0].equals(Questions.answers[i][1])) {
-                        score += 10;
-                    } else {
-                        score += 0;
-                    }
-                }
+//                for (int i = 0; i < Questions.useranswers.length; i++) {
+//                    if (Questions.useranswers[i][0].equals(Questions.answers[i][1])) {
+//                        score += 10;
+//                    } else {
+//                        score += 0;
+//                    }
+//                }
 
                 setVisible(false);
                 new Score(name, score);
 
             } else {
-                if (group.getSelection() == null) {
-                    Questions.useranswers[count][0] = "";
+                if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
+//                    Questions.useranswers[count][0] = "";
+                    score+=10;
                 } else {
-                    Questions.useranswers[count][0] = group.getSelection().getActionCommand();
+//                    Questions.useranswers[count][0] = group.getSelection().getActionCommand();
                 }
                 count++;
                 start(count);
@@ -245,19 +252,19 @@ public class Quiz extends JFrame implements ActionListener {
 
     public void start(int count) {
         qno.setText(" " + (count + 1) + ". ");
-        question.setText(Questions.questions[count][0]);
+        question.setText(questions[count][0]);
 
-        opt1.setText(Questions.questions[count][1]);
-        opt1.setActionCommand(Questions.questions[count][1]);
+        opt1.setText(questions[count][1]);
+        opt1.setActionCommand(questions[count][1]);
 
-        opt2.setText(Questions.questions[count][2]);
-        opt2.setActionCommand(Questions.questions[count][2]);
+        opt2.setText(questions[count][2]);
+        opt2.setActionCommand(questions[count][2]);
 
-        opt3.setText(Questions.questions[count][3]);
-        opt3.setActionCommand(Questions.questions[count][3]);
+        opt3.setText(questions[count][3]);
+        opt3.setActionCommand(questions[count][3]);
 
-        opt4.setText(Questions.questions[count][4]);
-        opt4.setActionCommand(Questions.questions[count][4]);
+        opt4.setText(questions[count][4]);
+        opt4.setActionCommand(questions[count][4]);
 
         group.clearSelection();
     }

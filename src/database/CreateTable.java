@@ -1,8 +1,6 @@
 package database;
 
 import com.mysql.cj.jdbc.Driver;
-
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 
 public class CreateTable {
@@ -30,7 +28,7 @@ public class CreateTable {
                     "PRIMARY KEY (que_id)" +
                     ");";
             boolean effect = statement.execute(sql);
-            if (effect) {
+            if (!effect) {
                 System.out.println("Table creation successful..!");
             } else {
                 System.out.println("Table creation unsuccessful..!");
