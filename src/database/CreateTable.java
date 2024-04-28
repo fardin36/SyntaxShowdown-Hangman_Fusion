@@ -26,7 +26,7 @@ public class CreateTable {
                     "opt2 VARCHAR(255) NOT NULL," +
                     "opt3 VARCHAR(255) NOT NULL," +
                     "opt4 VARCHAR(255) NOT NULL," +
-                    "ans VARCHAR(255) NOT NULL," +
+                    "ans INT NOT NULL," +
                     "PRIMARY KEY (que_id)" +
                     ");";
             boolean effect = statement.execute(sql);
@@ -35,7 +35,8 @@ public class CreateTable {
             } else {
                 System.out.println("Table creation unsuccessful..!");
             }
-
+            statement.close();
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
