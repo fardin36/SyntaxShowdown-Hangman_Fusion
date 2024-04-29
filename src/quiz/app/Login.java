@@ -10,7 +10,7 @@ public class Login extends JFrame implements ActionListener {
     JTextField text;
     JButton Next, back;
 
-    Login(){
+    Login() {
         super("Syntax Showdown : Hangman Fusion");
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -19,7 +19,7 @@ public class Login extends JFrame implements ActionListener {
         Image i = i1.getImage().getScaledInstance(550, 500, Image.SCALE_DEFAULT);
         ImageIcon i2 = new ImageIcon(i);
         JLabel image = new JLabel(i2);
-        image.setBounds(450,0,550,500);
+        image.setBounds(450, 0, 550, 500);
         add(image);
 
         JLabel heading = new JLabel("Syntax Showdown");
@@ -31,7 +31,7 @@ public class Login extends JFrame implements ActionListener {
         JLabel name = new JLabel("Enter Your Name");
         name.setBounds(160, 150, 300, 20);
         name.setFont(new Font("Mongolian Baiti", Font.BOLD, 18));
-        name.setForeground(new Color(22,99,54));
+        name.setForeground(new Color(22, 99, 54));
         add(name);
 
         text = new JTextField();
@@ -65,7 +65,7 @@ public class Login extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == Next){
+        if (e.getSource() == Next) {
             String name = text.getText();
             setVisible(false);
             new Rules(name);

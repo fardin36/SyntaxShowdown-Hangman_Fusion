@@ -126,22 +126,7 @@ public class Quiz extends JFrame implements ActionListener {
             opt3.setEnabled(true);
             opt4.setEnabled(true);
             ans_given = 1;
-            if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
-//                useranswers[count][0] = "";
-                score += 10;
-                // Hangman Utils
-                HangmanUtils.updateImage();
-            } else {
-//                Questions.useranswers[count][0] = group.getSelection().getActionCommand();
-            }
-
-//            for (int i = 0; i < Questions.useranswers.length; i++) {
-//                if (Questions.useranswers[count][0].equals(Questions.answers[i][1])) {
-//                    score += 10;
-//                } else {
-//                    score += 0;
-//                }
-//            }
+            checkSelection();
 
             if (count == 8) {
                 next.setEnabled(false);
@@ -151,36 +136,35 @@ public class Quiz extends JFrame implements ActionListener {
             count++;
             start(count);
         } else if (e.getSource() == help) {
-            if (count == 2 || count == 4 || count == 6 || count == 8 || count == 9) {
+            if (answers[count] == 1 || answers[count] == 3) {
                 opt2.setEnabled(false);
-                opt3.setEnabled(false);
+                opt4.setEnabled(false);
             } else {
                 opt1.setEnabled(false);
-                opt4.setEnabled(false);
+                opt3.setEnabled(false);
             }
             help.setEnabled(false);
         } else if (e.getSource() == submit) {
             ans_given = 1;
-            if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
-//                Questions.useranswers[count][0] = "";
-                score+=10;
-                // Hangman funcion
-                HangmanUtils.updateImage();
-            } else {
-//                Questions.useranswers[count][0] = group.getSelection().getActionCommand();
-            }
-
-//            for (int i = 0; i < Questions.useranswers.length; i++) {
-//                if (Questions.useranswers[count][0].equals(Questions.answers[i][1])) {
-//                    score += 10;
-//                } else {
-//                    score += 0;
-//                }
-//            }
-
+            checkSelection();
             count = 0;
             setVisible(false);
             new Score(name, score);
+        }
+    }
+
+    public void checkSelection() {
+        if (group.getSelection() == null) {
+            HangmanUtils.updateImage();
+        } else {
+            if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
+//                useranswers[count][0] = "";
+                score += 10;
+            } else {
+                // Hangman Utils
+                HangmanUtils.updateImage();
+//                Questions.useranswers[count][0] = group.getSelection().getActionCommand();
+            }
         }
     }
 
@@ -219,30 +203,22 @@ public class Quiz extends JFrame implements ActionListener {
                 submit.setEnabled(true);
             }
             if (count == 9) {
-                if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
-//                    Questions.useranswers[count][0] = "";
-                    score+=10;
-                } else {
-//                    Questions.useranswers[count][0] = group.getSelection().getActionCommand();
-                }
-
-//                for (int i = 0; i < Questions.useranswers.length; i++) {
-//                    if (Questions.useranswers[i][0].equals(Questions.answers[i][1])) {
-//                        score += 10;
-//                    } else {
-//                        score += 0;
-//                    }
-//                }
-
+                checkSelection();
                 setVisible(false);
                 new Score(name, score);
 
             } else {
-                if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
-//                    Questions.useranswers[count][0] = "";
-                    score+=10;
+                if (group.getSelection() == null) {
+                    HangmanUtils.updateImage();
                 } else {
-//                    Questions.useranswers[count][0] = group.getSelection().getActionCommand();
+                    if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
+//                useranswers[count][0] = "";
+                        score += 10;
+                    } else {
+                        // Hangman Utils
+                        HangmanUtils.updateImage();
+//                Questions.useranswers[count][0] = group.getSelection().getActionCommand();
+                    }
                 }
                 count++;
                 start(count);
