@@ -146,7 +146,7 @@ public class Quiz extends JFrame implements ActionListener {
                 count = 0;
                 eraseCount = 2;
                 setVisible(false);
-                new Score(name, score);
+                new Score(name, score, true);
                 return;
             }
             count++;
@@ -172,7 +172,11 @@ public class Quiz extends JFrame implements ActionListener {
             count = 0;
             eraseCount = 2;
             setVisible(false);
-            new Score(name, score);
+            if (HangmanUtils.getCurrentImageIndex() == 0) {
+                new Score(name, score, true);
+            } else {
+                new Score(name, score, false);
+            }
         }
     }
 
@@ -230,7 +234,11 @@ public class Quiz extends JFrame implements ActionListener {
                 count = 0;
                 eraseCount = 2;
                 setVisible(false);
-                new Score(name, score);
+                if (HangmanUtils.getCurrentImageIndex() == 0) {
+                    new Score(name, score, true);
+                } else {
+                    new Score(name, score, false);
+                }
             } else {
                 checkSelection();
                 count++;
