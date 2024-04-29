@@ -5,9 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import quiz.app.HangmanUtils;
-import database.RetrieveData;
-import quiz.app.ButtonUtils;
+import quiz.app.*;
+import database.*;
 
 public class Quiz extends JFrame implements ActionListener {
 
@@ -21,6 +20,9 @@ public class Quiz extends JFrame implements ActionListener {
     String[][] questions;
     int[] answers;
 
+    Color GREEN = new Color(22, 99, 54), YELLOW = new Color(255, 215, 0),
+            BLACK = Color.BLACK, WHITE = Color.WHITE;
+
     Quiz(String name) {
         super("Syntax Showdown : Hangman Fusion");
         this.name = name;
@@ -28,7 +30,6 @@ public class Quiz extends JFrame implements ActionListener {
         questions = retrieveData.getQuestions();
         answers = retrieveData.getAnswers();
 
-        // adding Hangman image initially
         add(HangmanUtils.addHang());
 
         qno = new JLabel();
@@ -51,21 +52,21 @@ public class Quiz extends JFrame implements ActionListener {
         add(opt4);
         group = ButtonUtils.newButtonGroup(opt1, opt2, opt3, opt4);
 
-        next = ButtonUtils.newJButton("Next", 550, 600, 200, 30, new Color(22, 99, 54), Color.WHITE);
+        next = ButtonUtils.newJButton("Next", 550, 600, 200, 30, GREEN, WHITE);
         next.addActionListener(this);
         add(next);
 
-        submit = ButtonUtils.newJButton("Sumit", 1000, 600,200,30, new Color(255,215,0),Color.BLACK);
+        submit = ButtonUtils.newJButton("Sumit", 1000, 600, 200, 30, YELLOW, BLACK);
         submit.addActionListener(this);
         submit.setEnabled(false);
         add(submit);
 
-        erase = ButtonUtils.newJButton("Erase",80,100,200,30, new Color(255,215,0),Color.BLACK);
+        erase = ButtonUtils.newJButton("Erase", 80, 100, 200, 30, YELLOW, BLACK);
         erase.addActionListener(this);
         erase.setEnabled(false);
         add(erase);
 
-        blast = ButtonUtils.newJButton("Blast", 780,600,200,30,new Color(22,99,54),Color.WHITE);
+        blast = ButtonUtils.newJButton("Blast", 780, 600, 200, 30, GREEN, WHITE);
         blast.addActionListener(this);
         add(blast);
 
@@ -182,7 +183,8 @@ public class Quiz extends JFrame implements ActionListener {
             opt4.setEnabled(true);
             if (count > 0 && HangmanUtils.getCurrentImageIndex() > 1) {
                 erase.setEnabled(true);
-            } else if (count == 8) {
+            }
+            if (count == 8) {
                 next.setEnabled(false);
                 submit.setEnabled(true);
             } else if (count == 9) {

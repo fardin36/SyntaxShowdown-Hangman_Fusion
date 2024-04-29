@@ -12,19 +12,19 @@ public class ButtonUtils {
         return opt;
     }
 
-    public static ButtonGroup newButtonGroup(JRadioButton... buttons) {
-        ButtonGroup group1 = new ButtonGroup();
-        for (JRadioButton button : buttons) {
-            group1.add(button);
-        }
-        return group1;
-    }
-
     public static JButton newJButton(String text, int x, int y, int width, int height, Color bg, Color fg) {
         JButton newJButton = new JButton(text);
         newJButton.setBounds(x, y, width, height);
         newJButton.setBackground(bg);
         newJButton.setForeground(fg);
         return newJButton;
+    }
+
+    public static ButtonGroup newButtonGroup(JRadioButton... buttons) {
+        ButtonGroup group1 = new ButtonGroup();
+        for (JRadioButton button : buttons) {
+            group1.add(button);
+        }
+        return group1;
     }
 }
