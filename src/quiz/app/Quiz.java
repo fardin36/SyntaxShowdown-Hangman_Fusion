@@ -135,18 +135,19 @@ public class Quiz extends JFrame implements ActionListener {
             opt4.setEnabled(true);
             ans_given = 1;
             checkSelection();
-            if (count == 1) {
+            if (count > 0 && HangmanUtils.getCurrentImageIndex() > 1) {
                 erase.setEnabled(true);
             }
             if (count == 8) {
                 next.setEnabled(false);
                 submit.setEnabled(true);
             }
-            if (HangmanUtils.getCurrentImageIndex() == 0) {
+            if (HangmanUtils.getCurrentImageIndex() == 0 && HangmanUtils.getIsReset()) {
+                HangmanUtils.setIsReset();
                 count = 0;
                 eraseCount = 2;
                 setVisible(false);
-                new Score(name, score, true);
+                new Score(name, score, false);
                 return;
             }
             count++;
@@ -173,9 +174,9 @@ public class Quiz extends JFrame implements ActionListener {
             eraseCount = 2;
             setVisible(false);
             if (HangmanUtils.getCurrentImageIndex() == 0) {
-                new Score(name, score, true);
-            } else {
                 new Score(name, score, false);
+            } else {
+                new Score(name, score, true);
             }
         }
     }
@@ -222,25 +223,31 @@ public class Quiz extends JFrame implements ActionListener {
             opt2.setEnabled(true);
             opt3.setEnabled(true);
             opt4.setEnabled(true);
-            if (count == 1) {
+            if (count > 0 && HangmanUtils.getCurrentImageIndex() > 1) {
                 erase.setEnabled(true);
-            }
-            if (count == 8) {
+            } else if (count == 8) {
                 next.setEnabled(false);
                 submit.setEnabled(true);
-            }
-            if (count == 9) {
+            } else if (count == 9) {
                 checkSelection();
                 count = 0;
                 eraseCount = 2;
                 setVisible(false);
                 if (HangmanUtils.getCurrentImageIndex() == 0) {
-                    new Score(name, score, true);
-                } else {
                     new Score(name, score, false);
+                } else {
+                    new Score(name, score, true);
                 }
             } else {
                 checkSelection();
+                if (HangmanUtils.getCurrentImageIndex() == 0 && HangmanUtils.getIsReset()) {
+                    HangmanUtils.setIsReset();
+                    count = 0;
+                    eraseCount = 2;
+                    setVisible(false);
+                    new Score(name, score, false);
+                    return;
+                }
                 count++;
                 start(count);
             }

@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.Arrays;
 
 public class RetrieveData {
-    private final String url = "jdbc:mysql://localhost:3306/mydb";
-    private final String username = "root";
-    private final String password = "fardin35";
+    private static final String url = "jdbc:mysql://localhost:3306/mydb";
+    private static final String username = "root";
+    private static final String password = "fardin35";
     //    String[][] questions = new String[15][5];
     String[][] questions = new String[][]{{
             "What is the primary purpose of the `public` keyword in Java?", "To hide a member variable or method", "To make a member variable or method accessible from anywhere", "To create a loop", "To handle user input"}, {

@@ -15,23 +15,20 @@ public class Score extends JFrame {
         JLabel image = new JLabel(i3);
         image.setBounds(60, 200, 200, 150);
         add(image);
-
+        JLabel heading;
         if (safe) {
-            JLabel heading = new JLabel("You saved me chief!");
-            heading.setBounds(100, 100, 700, 30);
-            heading.setFont(new Font("Tahoma", Font.BOLD, 26));
-            add(heading);
+            heading = new JLabel("You saved me chief!");
         } else {
-            JLabel heading = new JLabel("You couldn't save the man!");
-            heading.setBounds(100, 100, 700, 30);
-            heading.setFont(new Font("Tahoma", Font.BOLD, 26));
-            add(heading);
+            heading = new JLabel("You couldn't save the man!");
         }
-
-        JLabel heading = new JLabel("Thank You " + name + " for Playing");
-        heading.setBounds(100, 150, 700, 30);
+        heading.setBounds(100, 100, 700, 30);
         heading.setFont(new Font("Tahoma", Font.BOLD, 26));
         add(heading);
+
+        JLabel heading2 = new JLabel("Thank You " + name + " for Playing");
+        heading2.setBounds(100, 150, 700, 30);
+        heading2.setFont(new Font("Tahoma", Font.BOLD, 26));
+        add(heading2);
 
         JLabel Score = new JLabel("Your score is " + score);
         Score.setBounds(350, 230, 300, 30);
