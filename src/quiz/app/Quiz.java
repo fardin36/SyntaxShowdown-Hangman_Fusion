@@ -13,12 +13,13 @@ public class Quiz extends JFrame implements ActionListener {
     JLabel qno, question;
     JRadioButton opt1, opt2, opt3, opt4;
     ButtonGroup group;
-    JButton next, submit, help;
+    JButton next, submit, blast, erase;
 
     public static int timer = 15;
     public static int ans_given = 0;
     public static int count = 0;
     public static int score = 0;
+    public static int eraseCount = 2;
     String name;
     String[][] questions;
     int[] answers;
@@ -96,12 +97,20 @@ public class Quiz extends JFrame implements ActionListener {
         submit.setEnabled(false);
         add(submit);
 
-        help = new JButton("Help");
-        help.setBounds(780, 600, 200, 30);
-        help.setBackground(new Color(22, 99, 54));
-        help.setForeground(Color.WHITE);
-        help.addActionListener(this);
-        add(help);
+        erase = new JButton("Erase");
+        erase.setBounds(80, 100, 200, 30);
+        erase.setBackground(new Color(255, 215, 0));
+        erase.setForeground(Color.BLACK);
+        erase.addActionListener(this);
+        erase.setEnabled(false);
+        add(erase);
+
+        blast = new JButton("Blast");
+        blast.setBounds(780, 600, 200, 30);
+        blast.setBackground(new Color(22, 99, 54));
+        blast.setForeground(Color.WHITE);
+        blast.addActionListener(this);
+        add(blast);
 
         start(count);
 
@@ -126,19 +135,23 @@ public class Quiz extends JFrame implements ActionListener {
             opt4.setEnabled(true);
             ans_given = 1;
             checkSelection();
+            if (count == 1) {
+                erase.setEnabled(true);
+            }
             if (count == 8) {
                 next.setEnabled(false);
                 submit.setEnabled(true);
             }
-            if (HangmanUtils.getCurrentImageIndex() == 0){
+            if (HangmanUtils.getCurrentImageIndex() == 0) {
                 count = 0;
+                eraseCount = 2;
                 setVisible(false);
                 new Score(name, score);
                 return;
             }
             count++;
             start(count);
-        } else if (e.getSource() == help) {
+        } else if (e.getSource() == blast) {
             if (answers[count] == 1 || answers[count] == 3) {
                 opt2.setEnabled(false);
                 opt4.setEnabled(false);
@@ -146,11 +159,18 @@ public class Quiz extends JFrame implements ActionListener {
                 opt1.setEnabled(false);
                 opt3.setEnabled(false);
             }
-            help.setEnabled(false);
+            blast.setEnabled(false);
+        } else if (e.getSource() == erase) {
+            eraseCount--;
+            if (eraseCount == 0) {
+                erase.setEnabled(false);
+            }
+            HangmanUtils.undoUpdateImage();
         } else if (e.getSource() == submit) {
             ans_given = 1;
             checkSelection();
             count = 0;
+            eraseCount = 2;
             setVisible(false);
             new Score(name, score);
         }
@@ -198,16 +218,19 @@ public class Quiz extends JFrame implements ActionListener {
             opt2.setEnabled(true);
             opt3.setEnabled(true);
             opt4.setEnabled(true);
-
+            if (count == 1) {
+                erase.setEnabled(true);
+            }
             if (count == 8) {
                 next.setEnabled(false);
                 submit.setEnabled(true);
             }
             if (count == 9) {
                 checkSelection();
+                count = 0;
+                eraseCount = 2;
                 setVisible(false);
                 new Score(name, score);
-
             } else {
                 checkSelection();
                 count++;

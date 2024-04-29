@@ -25,6 +25,11 @@ public class HangmanUtils {
         }
     }
 
+    public static void undoUpdateImage(){
+        currentImageIndex--;
+        imageLabel.setIcon(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
+    }
+
     public static int getCurrentImageIndex() {
         return currentImageIndex;
     }
