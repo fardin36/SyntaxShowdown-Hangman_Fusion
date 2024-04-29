@@ -11,17 +11,21 @@ public class HangmanUtils {
             "resources/image5.png", "resources/image6.png", "resources/image7.png"
     };
 
-    public static JLabel addHang(){
+    public static JLabel addHang() {
         imageLabel = new JLabel(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
-        imageLabel.setBounds(0,0,1280,300);
+        imageLabel.setBounds(0, 0, 1280, 300);
         return imageLabel;
     }
 
     public static void updateImage() { // Assuming initial state
         currentImageIndex++;
-        if (currentImageIndex >= imagePaths.length) {
+        imageLabel.setIcon(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
+        if (currentImageIndex == imagePaths.length-1) {
             currentImageIndex = 0;
         }
-        imageLabel.setIcon(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
+    }
+
+    public static int getCurrentImageIndex() {
+        return currentImageIndex;
     }
 }

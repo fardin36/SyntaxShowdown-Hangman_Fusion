@@ -13,7 +13,7 @@ public class Quiz extends JFrame implements ActionListener {
     JLabel qno, question;
     JRadioButton opt1, opt2, opt3, opt4;
     ButtonGroup group;
-    JButton next, submit, help, changeButton;
+    JButton next, submit, help;
 
     public static int timer = 15;
     public static int ans_given = 0;
@@ -40,7 +40,6 @@ public class Quiz extends JFrame implements ActionListener {
 
         // adding Hangman image initially
         add(HangmanUtils.addHang());
-        // ==========
 
         qno = new JLabel();
         qno.setBounds(80, 400, 50, 30);
@@ -53,25 +52,25 @@ public class Quiz extends JFrame implements ActionListener {
         add(question);
 
         opt1 = new JRadioButton();
-        opt1.setBounds(140, 450, 700, 30);
+        opt1.setBounds(110, 450, 700, 30);
         opt1.setBackground(Color.WHITE);
         opt1.setFont(new Font("Dialog", Font.PLAIN, 20));
         add(opt1);
 
         opt2 = new JRadioButton();
-        opt2.setBounds(140, 480, 700, 30);
+        opt2.setBounds(110, 480, 700, 30);
         opt2.setBackground(Color.WHITE);
         opt2.setFont(new Font("Dialog", Font.PLAIN, 20));
         add(opt2);
 
         opt3 = new JRadioButton();
-        opt3.setBounds(140, 510, 700, 30);
+        opt3.setBounds(110, 510, 700, 30);
         opt3.setBackground(Color.WHITE);
         opt3.setFont(new Font("Dialog", Font.PLAIN, 20));
         add(opt3);
 
         opt4 = new JRadioButton();
-        opt4.setBounds(140, 540, 700, 30);
+        opt4.setBounds(110, 540, 700, 30);
         opt4.setBackground(Color.WHITE);
         opt4.setFont(new Font("Dialog", Font.PLAIN, 20));
         add(opt4);
@@ -127,12 +126,16 @@ public class Quiz extends JFrame implements ActionListener {
             opt4.setEnabled(true);
             ans_given = 1;
             checkSelection();
-
             if (count == 8) {
                 next.setEnabled(false);
                 submit.setEnabled(true);
             }
-
+            if (HangmanUtils.getCurrentImageIndex() == 0){
+                count = 0;
+                setVisible(false);
+                new Score(name, score);
+                return;
+            }
             count++;
             start(count);
         } else if (e.getSource() == help) {
@@ -158,12 +161,10 @@ public class Quiz extends JFrame implements ActionListener {
             HangmanUtils.updateImage();
         } else {
             if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
-//                useranswers[count][0] = "";
                 score += 10;
             } else {
                 // Hangman Utils
                 HangmanUtils.updateImage();
-//                Questions.useranswers[count][0] = group.getSelection().getActionCommand();
             }
         }
     }
@@ -185,7 +186,7 @@ public class Quiz extends JFrame implements ActionListener {
             Thread.sleep(1000);
             repaint();
         } catch (Exception E) {
-            E.printStackTrace();
+            E.fillInStackTrace();
         }
 
         if (ans_given == 1) {
@@ -208,18 +209,7 @@ public class Quiz extends JFrame implements ActionListener {
                 new Score(name, score);
 
             } else {
-                if (group.getSelection() == null) {
-                    HangmanUtils.updateImage();
-                } else {
-                    if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
-//                useranswers[count][0] = "";
-                        score += 10;
-                    } else {
-                        // Hangman Utils
-                        HangmanUtils.updateImage();
-//                Questions.useranswers[count][0] = group.getSelection().getActionCommand();
-                    }
-                }
+                checkSelection();
                 count++;
                 start(count);
             }
