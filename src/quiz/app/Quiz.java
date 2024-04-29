@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import quiz.app.HangmanUtils;
 import database.RetrieveData;
+import quiz.app.ButtonUtils;
 
 public class Quiz extends JFrame implements ActionListener {
 
@@ -15,11 +16,7 @@ public class Quiz extends JFrame implements ActionListener {
     ButtonGroup group;
     JButton next, submit, blast, erase;
 
-    public static int timer = 15;
-    public static int ans_given = 0;
-    public static int count = 0;
-    public static int score = 0;
-    public static int eraseCount = 2;
+    public static int timer = 15, ans_given = 0, count = 0, score = 0, eraseCount = 2;
     String name;
     String[][] questions;
     int[] answers;
@@ -30,14 +27,6 @@ public class Quiz extends JFrame implements ActionListener {
         RetrieveData retrieveData = new RetrieveData(15);
         questions = retrieveData.getQuestions();
         answers = retrieveData.getAnswers();
-        /*
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/quiz.png"));
-        Image i = i1.getImage().getScaledInstance(1280,300,Image.SCALE_DEFAULT);
-        ImageIcon i2 = new ImageIcon(i);
-        JLabel img = new JLabel(i2);
-        img.setBounds(0,0,1280, 300);
-        add(img);
-         */
 
         // adding Hangman image initially
         add(HangmanUtils.addHang());
@@ -52,63 +41,31 @@ public class Quiz extends JFrame implements ActionListener {
         question.setFont(new Font("Tahoma", Font.PLAIN, 24));
         add(question);
 
-        opt1 = new JRadioButton();
-        opt1.setBounds(110, 450, 700, 30);
-        opt1.setBackground(Color.WHITE);
-        opt1.setFont(new Font("Dialog", Font.PLAIN, 20));
+        opt1 = ButtonUtils.newRadioButton(450);
+        opt2 = ButtonUtils.newRadioButton(480);
+        opt3 = ButtonUtils.newRadioButton(510);
+        opt4 = ButtonUtils.newRadioButton(540);
         add(opt1);
-
-        opt2 = new JRadioButton();
-        opt2.setBounds(110, 480, 700, 30);
-        opt2.setBackground(Color.WHITE);
-        opt2.setFont(new Font("Dialog", Font.PLAIN, 20));
         add(opt2);
-
-        opt3 = new JRadioButton();
-        opt3.setBounds(110, 510, 700, 30);
-        opt3.setBackground(Color.WHITE);
-        opt3.setFont(new Font("Dialog", Font.PLAIN, 20));
         add(opt3);
-
-        opt4 = new JRadioButton();
-        opt4.setBounds(110, 540, 700, 30);
-        opt4.setBackground(Color.WHITE);
-        opt4.setFont(new Font("Dialog", Font.PLAIN, 20));
         add(opt4);
+        group = ButtonUtils.newButtonGroup(opt1, opt2, opt3, opt4);
 
-        group = new ButtonGroup();
-        group.add(opt1);
-        group.add(opt2);
-        group.add(opt3);
-        group.add(opt4);
-
-        next = new JButton("Next");
-        next.setBounds(550, 600, 200, 30);
-        next.setBackground(new Color(22, 99, 54));
-        next.setForeground(Color.WHITE);
+        next = ButtonUtils.newJButton("Next", 550, 600, 200, 30, new Color(22, 99, 54), Color.WHITE);
         next.addActionListener(this);
         add(next);
 
-        submit = new JButton("Submit");
-        submit.setBounds(1000, 600, 200, 30);
-        submit.setBackground(new Color(255, 215, 0));
-        submit.setForeground(Color.BLACK);
+        submit = ButtonUtils.newJButton("Sumit", 1000, 600,200,30, new Color(255,215,0),Color.BLACK);
         submit.addActionListener(this);
         submit.setEnabled(false);
         add(submit);
 
-        erase = new JButton("Erase");
-        erase.setBounds(80, 100, 200, 30);
-        erase.setBackground(new Color(255, 215, 0));
-        erase.setForeground(Color.BLACK);
+        erase = ButtonUtils.newJButton("Erase",80,100,200,30, new Color(255,215,0),Color.BLACK);
         erase.addActionListener(this);
         erase.setEnabled(false);
         add(erase);
 
-        blast = new JButton("Blast");
-        blast.setBounds(780, 600, 200, 30);
-        blast.setBackground(new Color(22, 99, 54));
-        blast.setForeground(Color.WHITE);
+        blast = ButtonUtils.newJButton("Blast", 780,600,200,30,new Color(22,99,54),Color.WHITE);
         blast.addActionListener(this);
         add(blast);
 
