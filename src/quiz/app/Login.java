@@ -47,7 +47,7 @@ public class Login extends JFrame implements ActionListener {
         Next.addActionListener(this);
         add(Next);
 
-        back = ButtonUtils.newJButton("Back",  240, 380,120, 25, CommonConstants.PINK, CommonConstants.EBONY);
+        back = ButtonUtils.newJButton("Back", 240, 380, 120, 25, CommonConstants.PINK, CommonConstants.EBONY);
         back.addActionListener(this);
         add(back);
 
@@ -70,6 +70,7 @@ public class Login extends JFrame implements ActionListener {
             new Rules(name);
         } else if (e.getSource() == back) {
             System.exit(50);
+//            setState(JFrame.ICONIFIED);
         }
     }
 

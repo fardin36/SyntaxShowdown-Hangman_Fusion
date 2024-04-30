@@ -19,8 +19,21 @@ public class ButtonUtils {
     public static JButton newJButton(String text, int x, int y, int width, int height, Color bg, Color fg) {
         JButton newJButton = new JButton(text);
         newJButton.setBounds(x, y, width, height);
+        newJButton.setFocusPainted(false);
         newJButton.setBackground(bg);
         newJButton.setForeground(fg);
+        return newJButton;
+    }
+
+    public static JButton newJButton(String imgPath, int x, int y, int width, int height) {
+        ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource(imgPath));
+        Image resizedImage = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        ImageIcon resizedImageIcon = new ImageIcon(resizedImage);
+        JButton newJButton = new JButton(resizedImageIcon);
+        newJButton.setBorderPainted(false);
+        newJButton.setBounds(x, y, width, height);
+        newJButton.setContentAreaFilled(false);
+//        newJButton.setBackground(bg);
         return newJButton;
     }
 

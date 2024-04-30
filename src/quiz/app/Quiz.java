@@ -60,13 +60,16 @@ public class Quiz extends JFrame implements ActionListener {
         submit.setEnabled(false);
         add(submit);
 
-        erase = ButtonUtils.newJButton("Erase", 80, 100, 200, 30, CommonConstants.YELLOW, CommonConstants.BLACK);
+        erase = ButtonUtils.newJButton("icons/erase.png",50,50,100,100);
         erase.addActionListener(this);
         erase.setEnabled(false);
+//        erase.setVisible(false);
         add(erase);
 
-        blast = ButtonUtils.newJButton("Blast", 80, 150, 200, 30, CommonConstants.GREEN, CommonConstants.WHITE);
+
+        blast = ButtonUtils.newJButton("icons/blast.png",50,160,100,100);
         blast.addActionListener(this);
+//        blast.setVisible(false);
         add(blast);
 
         start(count);
