@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import quiz.app.*;
+
 public class Login extends JFrame implements ActionListener {
 
     JTextField text;
@@ -16,45 +18,43 @@ public class Login extends JFrame implements ActionListener {
         setLayout(null);
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/login.png"));
-        Image i = i1.getImage().getScaledInstance(550, 500, Image.SCALE_DEFAULT);
+        Image i = i1.getImage().getScaledInstance(500, 500, Image.SCALE_DEFAULT);
         ImageIcon i2 = new ImageIcon(i);
         JLabel image = new JLabel(i2);
-        image.setBounds(450, 0, 550, 500);
+        image.setBounds(450, -10, 500, 500);
         add(image);
 
-        JLabel heading = new JLabel("Syntax Showdown");
-        heading.setBounds(80, 60, 400, 45);
-        heading.setFont(new Font("Viner Hand ITC", Font.BOLD, 40));
-        heading.setForeground(new Color(22, 99, 54));
-        add(heading);
+//        JLabel heading = new JLabel("Syntax Showdown");
+//        heading.setBounds(80, 60, 400, 45);
+//        heading.setFont(new Font("Viner Hand ITC", Font.BOLD, 40));
+//        heading.setForeground(CommonConstants.WHITE);
+//        add(heading);
 
         JLabel name = new JLabel("Enter Your Name");
         name.setBounds(160, 150, 300, 20);
         name.setFont(new Font("Mongolian Baiti", Font.BOLD, 18));
-        name.setForeground(new Color(22, 99, 54));
+        name.setForeground(CommonConstants.WHITE);
         add(name);
 
         text = new JTextField();
         text.setBounds(80, 200, 300, 25);
         text.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        text.setForeground(CommonConstants.WHITE);
+        text.setBackground(CommonConstants.BLACK);
+        text.setCaretColor(CommonConstants.WHITE);
         add(text);
 
-        Next = new JButton("Next");
-        Next.setBounds(100, 270, 120, 25);
-        Next.setBackground(new Color(22, 99, 54));
-        Next.setForeground(Color.WHITE);
+        Next = ButtonUtils.newJButton("Next", 100, 270, 120, 25, CommonConstants.GREEN, CommonConstants.WHITE);
         Next.addActionListener(this);
         add(Next);
 
-        back = new JButton("back");
-        back.setBounds(250, 270, 120, 25);
-        back.setBackground(new Color(22, 99, 54));
-        back.setForeground(Color.WHITE);
+        back = ButtonUtils.newJButton("Back", 250, 270, 120, 25, CommonConstants.GREEN, CommonConstants.WHITE);
         back.addActionListener(this);
         add(back);
 
         setSize(1000, 500);
         setLocation(200, 150);
+        getContentPane().setBackground(CommonConstants.BLACK);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);

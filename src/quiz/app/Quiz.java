@@ -20,8 +20,10 @@ public class Quiz extends JFrame implements ActionListener {
     String[][] questions;
     int[] answers;
 
-    Color GREEN = new Color(22, 99, 54), YELLOW = new Color(255, 215, 0),
-            BLACK = Color.BLACK, WHITE = Color.WHITE;
+    Color GREEN = new Color(22, 99, 54),
+            YELLOW = new Color(255, 215, 0),
+            BLACK = new Color(16, 24, 32, 255),
+            WHITE = new Color(253, 253, 253, 255);
 
     Quiz(String name) {
         super("Syntax Showdown : Hangman Fusion");
@@ -33,19 +35,21 @@ public class Quiz extends JFrame implements ActionListener {
         add(HangmanUtils.addHang());
 
         qno = new JLabel();
-        qno.setBounds(80, 400, 50, 30);
+        qno.setBounds(80, 300, 1140, 70);
         qno.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        qno.setForeground(Color.MAGENTA);
         add(qno);
 
         question = new JLabel();
-        question.setBounds(120, 400, 1000, 30);
-        question.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        question.setBounds(120, 300, 1140, 70);
+        question.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        question.setForeground(CommonConstants.WHITE);
         add(question);
 
-        opt1 = ButtonUtils.newRadioButton(450);
-        opt2 = ButtonUtils.newRadioButton(480);
-        opt3 = ButtonUtils.newRadioButton(510);
-        opt4 = ButtonUtils.newRadioButton(540);
+        opt1 = ButtonUtils.newRadioButton(380, CommonConstants.WHITE, CommonConstants.BLACK, 1);
+        opt2 = ButtonUtils.newRadioButton(410, CommonConstants.WHITE, CommonConstants.BLACK, 2);
+        opt3 = ButtonUtils.newRadioButton(440, CommonConstants.WHITE, CommonConstants.BLACK, 3);
+        opt4 = ButtonUtils.newRadioButton(470, CommonConstants.WHITE, CommonConstants.BLACK, 4);
         add(opt1);
         add(opt2);
         add(opt3);
@@ -56,7 +60,7 @@ public class Quiz extends JFrame implements ActionListener {
         next.addActionListener(this);
         add(next);
 
-        submit = ButtonUtils.newJButton("Sumit", 1000, 600, 200, 30, YELLOW, BLACK);
+        submit = ButtonUtils.newJButton("Sumit", 800, 600, 200, 30, YELLOW, BLACK);
         submit.addActionListener(this);
         submit.setEnabled(false);
         add(submit);
@@ -66,7 +70,7 @@ public class Quiz extends JFrame implements ActionListener {
         erase.setEnabled(false);
         add(erase);
 
-        blast = ButtonUtils.newJButton("Blast", 780, 600, 200, 30, GREEN, WHITE);
+        blast = ButtonUtils.newJButton("Blast", 80, 150, 200, 30, GREEN, WHITE);
         blast.addActionListener(this);
         add(blast);
 
@@ -74,7 +78,7 @@ public class Quiz extends JFrame implements ActionListener {
 
         setSize(1280, 720);
         setLocation(40, 10);
-        getContentPane().setBackground(Color.WHITE);
+        getContentPane().setBackground(BLACK);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -143,7 +147,7 @@ public class Quiz extends JFrame implements ActionListener {
         if (group.getSelection() == null) {
             HangmanUtils.updateImage();
         } else {
-            if (group.getSelection().getActionCommand().equals(questions[count][answers[count]])) {
+            if (group.getSelection().getActionCommand().equals(String.valueOf(answers[count]))) {
                 score += 10;
             } else {
                 // Hangman Utils
@@ -159,9 +163,9 @@ public class Quiz extends JFrame implements ActionListener {
         g.setColor(Color.RED);
         g.setFont(new Font("Tahoma", Font.BOLD, 25));
         if (timer > 0) {
-            g.drawString(time, 950, 500);
+            g.drawString(time, 950, 200);
         } else {
-            g.drawString("Times up !!", 950, 500);
+            g.drawString("Times up !!", 950, 200);
         }
         timer--;
 
@@ -214,20 +218,16 @@ public class Quiz extends JFrame implements ActionListener {
     }
 
     public void start(int count) {
-        qno.setText(" " + (count + 1) + ". ");
-        question.setText(questions[count][0]);
+        qno.setText("<html>" + (count + 1) + ".<html>");
+        question.setText("<html>" + questions[count][0] + "<html>");
 
         opt1.setText(questions[count][1]);
-        opt1.setActionCommand(questions[count][1]);
 
         opt2.setText(questions[count][2]);
-        opt2.setActionCommand(questions[count][2]);
 
         opt3.setText(questions[count][3]);
-        opt3.setActionCommand(questions[count][3]);
 
         opt4.setText(questions[count][4]);
-        opt4.setActionCommand(questions[count][4]);
 
         group.clearSelection();
     }

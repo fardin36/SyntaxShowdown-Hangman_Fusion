@@ -3,12 +3,16 @@ package quiz.app;
 import javax.swing.*;
 import java.awt.*;
 
+import quiz.app.CommonConstants.*;
+
 public class ButtonUtils {
-    public static JRadioButton newRadioButton(int y) {
+    public static JRadioButton newRadioButton(int y, Color fg, Color bg, int actionCommand) {
         JRadioButton opt = new JRadioButton();
-        opt.setBounds(110, y, 700, 30);
-        opt.setBackground(Color.WHITE);
-        opt.setFont(new Font("Dialog", Font.PLAIN, 20));
+        opt.setBounds(110, y, 1000, 30);
+        opt.setFont(new Font("Dialog", Font.PLAIN, 18));
+        opt.setBackground(bg);
+        opt.setForeground(fg);
+        opt.setActionCommand(String.valueOf(actionCommand));
         return opt;
     }
 

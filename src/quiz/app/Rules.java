@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import quiz.app.*;
+
 public class Rules extends JFrame implements ActionListener {
 
     JButton start, back;
@@ -18,7 +20,7 @@ public class Rules extends JFrame implements ActionListener {
         JLabel heading = new JLabel("<html>"+"Hello "+ name +"!" +"<br>"+ "Welcome to Syntax Showdown"+"<html>");
         heading.setBounds(80,100,700,80);
         heading.setFont(new Font("Viner Hand ITC", Font.BOLD, 28));
-        heading.setForeground(new Color(22,99,54));
+        heading.setForeground(CommonConstants.WHITE);
         add(heading);
 
         JLabel rules = new JLabel("<html>"+
@@ -31,7 +33,7 @@ public class Rules extends JFrame implements ActionListener {
                 "<html>");
         rules.setBounds(70,150,700,350);
         rules.setFont(new Font("Tohama", Font.PLAIN, 16));
-        rules.setForeground(new Color(22,99,54));
+        rules.setForeground(CommonConstants.WHITE);
         add(rules);
 
         back = new JButton("Back");
@@ -48,15 +50,16 @@ public class Rules extends JFrame implements ActionListener {
         start.addActionListener(this);
         add(start);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/back.png"));
-        Image i = i1.getImage().getScaledInstance(800,650,Image.SCALE_DEFAULT);
-        ImageIcon i2 = new ImageIcon(i);
-        JLabel image = new JLabel(i2);
-        image.setBounds(-10,-10,800,650);
-        add(image);
+//        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/back.png"));
+//        Image i = i1.getImage().getScaledInstance(800,650,Image.SCALE_DEFAULT);
+//        ImageIcon i2 = new ImageIcon(i);
+//        JLabel image = new JLabel(i2);
+//        image.setBounds(-10,-10,800,650);
+//        add(image);
 
         setSize(800, 650);
         setLocation(280, 60);
+        getContentPane().setBackground(CommonConstants.BLACK);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
