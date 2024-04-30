@@ -57,10 +57,9 @@ public class Score extends JFrame {
 //        iimage.setBounds(-10, -15, 750, 550);
 //        add(iimage);
 
-        setSize(750, 550);
-        setLocation(400, 150);
+        setSize(1280, 720);
+        setLocation(40, 10);
         getContentPane().setBackground(CommonConstants.BLACK);
-//        Object put = UIManager.put("JFrame.activeTitleBackground", CommonConstants.BLACK);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);

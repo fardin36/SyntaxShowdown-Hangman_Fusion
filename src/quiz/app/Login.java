@@ -14,14 +14,13 @@ public class Login extends JFrame implements ActionListener {
 
     Login() {
         super("Syntax Showdown : Hangman Fusion");
-        getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/login.png"));
-        Image i = i1.getImage().getScaledInstance(500, 500, Image.SCALE_DEFAULT);
+        Image i = i1.getImage().getScaledInstance(640, 720, Image.SCALE_DEFAULT);
         ImageIcon i2 = new ImageIcon(i);
         JLabel image = new JLabel(i2);
-        image.setBounds(450, -10, 500, 500);
+        image.setBounds(500, 0, 640, 720);
         add(image);
 
 //        JLabel heading = new JLabel("Syntax Showdown");
@@ -31,30 +30,30 @@ public class Login extends JFrame implements ActionListener {
 //        add(heading);
 
         JLabel name = new JLabel("Enter Your Name");
-        name.setBounds(160, 150, 300, 20);
+        name.setBounds(300, 280, 300, 20);
         name.setFont(new Font("Mongolian Baiti", Font.BOLD, 18));
-        name.setForeground(CommonConstants.WHITE);
+        name.setForeground(CommonConstants.SLATE);
         add(name);
 
         text = new JTextField();
-        text.setBounds(80, 200, 300, 25);
+        text.setBounds(220, 330, 300, 25);
         text.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        text.setForeground(CommonConstants.WHITE);
-        text.setBackground(CommonConstants.BLACK);
-        text.setCaretColor(CommonConstants.WHITE);
+        text.setForeground(CommonConstants.SLATE);
+        text.setBackground(CommonConstants.EBONY);
+        text.setCaretColor(CommonConstants.SLATE);
         add(text);
 
-        Next = ButtonUtils.newJButton("Next", 100, 270, 120, 25, CommonConstants.GREEN, CommonConstants.WHITE);
+        Next = ButtonUtils.newJButton("Next", 390, 380, 120, 25, CommonConstants.CYAN, CommonConstants.EBONY);
         Next.addActionListener(this);
         add(Next);
 
-        back = ButtonUtils.newJButton("Back", 250, 270, 120, 25, CommonConstants.GREEN, CommonConstants.WHITE);
+        back = ButtonUtils.newJButton("Back",  240, 380,120, 25, CommonConstants.PINK, CommonConstants.EBONY);
         back.addActionListener(this);
         add(back);
 
-        setSize(1000, 500);
-        setLocation(200, 150);
-        getContentPane().setBackground(CommonConstants.BLACK);
+        setSize(1280, 720);
+        setLocation(40, 10);
+        getContentPane().setBackground(CommonConstants.EBONY);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);

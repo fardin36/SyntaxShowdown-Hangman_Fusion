@@ -9,7 +9,7 @@ public class HangmanUtils {
     static boolean isReset = false;
     private static final String[] imagePaths = {
             "resources/image1.png", "resources/image2.png", "resources/image3.png", "resources/image4.png",
-            "resources/image5.png", "resources/image6.png", "resources/image7.png"
+            "resources/image5.png", "resources/image6.png", "resources/image7.png" , "resources/image8.png"
     };
 
     public static JLabel addHang() {
@@ -21,18 +21,18 @@ public class HangmanUtils {
     public static void updateImage() { // Assuming initial state
         currentImageIndex++;
         imageLabel.setIcon(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
-        if (currentImageIndex == imagePaths.length-1) {
+        if (currentImageIndex == imagePaths.length - 1) {
             currentImageIndex = 0;
             setIsReset();
         }
     }
 
-    public static void undoUpdateImage(){
+    public static void undoUpdateImage() {
         currentImageIndex--;
         imageLabel.setIcon(new ImageIcon(ClassLoader.getSystemResource(imagePaths[currentImageIndex])));
     }
 
-    public static boolean getIsReset(){
+    public static boolean getIsReset() {
         return isReset;
     }
 

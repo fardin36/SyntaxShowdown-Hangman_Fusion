@@ -20,11 +20,6 @@ public class Quiz extends JFrame implements ActionListener {
     String[][] questions;
     int[] answers;
 
-    Color GREEN = new Color(22, 99, 54),
-            YELLOW = new Color(255, 215, 0),
-            BLACK = new Color(16, 24, 32, 255),
-            WHITE = new Color(253, 253, 253, 255);
-
     Quiz(String name) {
         super("Syntax Showdown : Hangman Fusion");
         this.name = name;
@@ -56,21 +51,21 @@ public class Quiz extends JFrame implements ActionListener {
         add(opt4);
         group = ButtonUtils.newButtonGroup(opt1, opt2, opt3, opt4);
 
-        next = ButtonUtils.newJButton("Next", 550, 600, 200, 30, GREEN, WHITE);
+        next = ButtonUtils.newJButton("Next", 550, 600, 200, 30, CommonConstants.GREEN, CommonConstants.WHITE);
         next.addActionListener(this);
         add(next);
 
-        submit = ButtonUtils.newJButton("Sumit", 800, 600, 200, 30, YELLOW, BLACK);
+        submit = ButtonUtils.newJButton("Sumit", 800, 600, 200, 30, CommonConstants.YELLOW, CommonConstants.BLACK);
         submit.addActionListener(this);
         submit.setEnabled(false);
         add(submit);
 
-        erase = ButtonUtils.newJButton("Erase", 80, 100, 200, 30, YELLOW, BLACK);
+        erase = ButtonUtils.newJButton("Erase", 80, 100, 200, 30, CommonConstants.YELLOW, CommonConstants.BLACK);
         erase.addActionListener(this);
         erase.setEnabled(false);
         add(erase);
 
-        blast = ButtonUtils.newJButton("Blast", 80, 150, 200, 30, GREEN, WHITE);
+        blast = ButtonUtils.newJButton("Blast", 80, 150, 200, 30, CommonConstants.GREEN, CommonConstants.WHITE);
         blast.addActionListener(this);
         add(blast);
 
@@ -78,7 +73,7 @@ public class Quiz extends JFrame implements ActionListener {
 
         setSize(1280, 720);
         setLocation(40, 10);
-        getContentPane().setBackground(BLACK);
+        getContentPane().setBackground(CommonConstants.BLACK);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);

@@ -57,8 +57,8 @@ public class Rules extends JFrame implements ActionListener {
 //        image.setBounds(-10,-10,800,650);
 //        add(image);
 
-        setSize(800, 650);
-        setLocation(280, 60);
+        setSize(1280, 720);
+        setLocation(40, 10);
         getContentPane().setBackground(CommonConstants.BLACK);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
