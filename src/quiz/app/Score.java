@@ -25,22 +25,22 @@ public class Score extends JFrame {
         }
         heading1.setBounds(100, 100, 700, 30);
         heading1.setFont(new Font("Tahoma", Font.BOLD, 26));
-        heading1.setForeground(CommonConstants.WHITE);
+        heading1.setForeground(Color.WHITE);
         add(heading1);
 
         heading2 = new JLabel("Thank You " + name + " for Playing");
         heading2.setBounds(100, 150, 700, 30);
         heading2.setFont(new Font("Tahoma", Font.BOLD, 26));
-        heading2.setForeground(CommonConstants.WHITE);
+        heading2.setForeground(Color.WHITE);
         add(heading2);
 
         Score = new JLabel("Your score is " + score);
         Score.setBounds(350, 230, 300, 30);
         Score.setFont(new Font("Tahoma", Font.BOLD, 26));
-        Score.setForeground(CommonConstants.WHITE);
+        Score.setForeground(Color.WHITE);
         add(Score);
 
-        JButton exit = ButtonUtils.newJButton("Next", 380, 300, 120, 30, CommonConstants.GREEN, CommonConstants.WHITE);
+        JButton exit = ButtonUtils.newJButton("Next", 380, 300, 120, 30, Color.GREEN, Color.WHITE);
         add(exit);
         exit.addActionListener(new AbstractAction() {
             @Override
@@ -59,7 +59,7 @@ public class Score extends JFrame {
 
         setSize(1280, 720);
         setLocation(40, 10);
-        getContentPane().setBackground(CommonConstants.BLACK);
+        getContentPane().setBackground(Color.BLACK);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
