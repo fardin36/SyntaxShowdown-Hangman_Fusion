@@ -2,10 +2,12 @@ package quiz.app;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import quiz.app.CommonConstants.*;
 
-public class ButtonUtils {
+public class ButtonUtils implements MouseListener {
     public static JRadioButton newRadioButton(int y, Color fg, Color bg, int actionCommand) {
         JRadioButton opt = new JRadioButton();
         opt.setBounds(110, y, 1000, 30);
@@ -16,7 +18,7 @@ public class ButtonUtils {
         return opt;
     }
 
-    public static JButton newJButton(String text, int x, int y, int width, int height, Color bg, Color fg) {
+    public static JButton newJButton (String text, int x, int y, int width, int height, Color bg, Color fg) {
         JButton newJButton = new JButton(text);
         newJButton.setBounds(x, y, width, height);
         newJButton.setFocusPainted(false);
@@ -43,5 +45,30 @@ public class ButtonUtils {
             group1.add(button);
         }
         return group1;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

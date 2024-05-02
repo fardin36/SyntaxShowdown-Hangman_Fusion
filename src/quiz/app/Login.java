@@ -16,40 +16,43 @@ public class Login extends JFrame implements ActionListener {
         super("Syntax Showdown : Hangman Fusion");
         setLayout(null);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/login.png"));
-        Image i = i1.getImage().getScaledInstance(640, 720, Image.SCALE_DEFAULT);
-        ImageIcon i2 = new ImageIcon(i);
-        JLabel image = new JLabel(i2);
-        image.setBounds(500, 0, 640, 720);
-        add(image);
-
 //        JLabel heading = new JLabel("Syntax Showdown");
 //        heading.setBounds(80, 60, 400, 45);
 //        heading.setFont(new Font("Viner Hand ITC", Font.BOLD, 40));
 //        heading.setForeground(CommonConstants.WHITE);
 //        add(heading);
 
-        JLabel name = new JLabel("Enter Your Name");
-        name.setBounds(300, 280, 300, 20);
-        name.setFont(new Font("Mongolian Baiti", Font.BOLD, 18));
-        name.setForeground(CommonConstants.SLATE);
-        add(name);
+//        JLabel name = new JLabel("Enter Your Name");
+//        name.setBounds(300, 280, 300, 20);
+//        name.setFont(new Font("Mongolian Baiti", Font.BOLD, 18));
+//        name.setForeground(CommonConstants.SLATE);
+//        add(name);
 
         text = new JTextField();
-        text.setBounds(220, 330, 300, 25);
+        text.setBounds(210, 392, 285, 25);
         text.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        text.setForeground(CommonConstants.SLATE);
-        text.setBackground(CommonConstants.EBONY);
-        text.setCaretColor(CommonConstants.SLATE);
+        text.setBorder(null);
+        text.setForeground(CommonConstants.AUREOLIN);
+        text.setBackground(CommonConstants.RICH_BLACK);
+        text.setCaretColor(CommonConstants.AUREOLIN);
         add(text);
 
-        Next = ButtonUtils.newJButton("Next", 390, 380, 120, 25, CommonConstants.CYAN, CommonConstants.EBONY);
+        Next = ButtonUtils.newJButton("Next", 360, 450, 120, 25, CommonConstants.AUREOLIN, CommonConstants.RICH_BLACK);
+        Next.setBorder(BorderFactory.createLineBorder(CommonConstants.RICH_BLACK, 2));
         Next.addActionListener(this);
         add(Next);
 
-        back = ButtonUtils.newJButton("Back", 240, 380, 120, 25, CommonConstants.PINK, CommonConstants.EBONY);
+        back = ButtonUtils.newJButton("Back", 220, 450, 120, 25, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN);
+        back.setBorder(BorderFactory.createLineBorder(CommonConstants.RICH_BLACK, 2));
         back.addActionListener(this);
         add(back);
+
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/login.png"));
+        Image i = i1.getImage().getScaledInstance(1280, 720, Image.SCALE_DEFAULT);
+        ImageIcon i2 = new ImageIcon(i);
+        JLabel image = new JLabel(i2);
+        image.setBounds(0, 0, 1280, 720);
+        add(image);
 
         setSize(1280, 720);
         setLocation(40, 10);
