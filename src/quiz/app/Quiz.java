@@ -31,13 +31,13 @@ public class Quiz extends JFrame implements ActionListener {
 
         qno = new JLabel();
         qno.setBounds(80, 300, 1140, 70);
-        qno.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        qno.setFont(new Font("Consolas", Font.PLAIN, 24));
         qno.setForeground(CommonConstants.RICH_BLACK);
         add(qno);
 
         question = new JLabel();
         question.setBounds(120, 300, 1140, 70);
-        question.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        question.setFont(new Font("Tohama", Font.PLAIN, 20));
         question.setForeground(CommonConstants.RICH_BLACK);
         add(question);
 
@@ -55,7 +55,7 @@ public class Quiz extends JFrame implements ActionListener {
         next.addActionListener(this);
         add(next);
 
-        submit = ButtonUtils.newJButton("Sumit", 800, 600, 200, 30, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN);
+        submit = ButtonUtils.newJButton("Submit", 800, 600, 200, 30, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN);
         submit.addActionListener(this);
         submit.setEnabled(false);
         add(submit);
@@ -149,7 +149,7 @@ public class Quiz extends JFrame implements ActionListener {
 
         String time = "Time left = " + timer + "seconds";
         g.setColor(CommonConstants.RICH_BLACK);
-        g.setFont(new Font("Tahoma", Font.BOLD, 25));
+        g.setFont(new Font("Consolas", Font.BOLD, 25));
         if (timer > 0) {
             g.drawString(time, 950, 200);
         } else {
@@ -212,7 +212,7 @@ public class Quiz extends JFrame implements ActionListener {
             HangmanUtils.updateImage();
         } else {
             if (group.getSelection().getActionCommand().equals(String.valueOf(answers[count]))) {
-                score += 10;
+                score++;
             } else {
                 // Hangman Utils
                 HangmanUtils.updateImage();
@@ -227,7 +227,7 @@ public class Quiz extends JFrame implements ActionListener {
         opt4.setEnabled(true);
         ans_given = 1;
         checkSelection();
-        if (count > 0 && HangmanUtils.getCurrentImageIndex() > 1 && eraseCount>=0) {
+        if (count > 0 && HangmanUtils.getCurrentImageIndex() > 1 && eraseCount >= 0) {
             erase.setEnabled(true);
         }
         if (count == 8) {
@@ -235,21 +235,23 @@ public class Quiz extends JFrame implements ActionListener {
             submit.setEnabled(true);
         }
         if (count == 9) {
+            if (HangmanUtils.getIsReset()) {
+                HangmanUtils.setIsReset();
+                new Score(name, score, false, count);
+            } else {
+                HangmanUtils.resetImageIndex();
+                new Score(name, score, true, count);
+            }
             count = 0;
             eraseCount = 2;
             setVisible(false);
-            if (HangmanUtils.getCurrentImageIndex() == 0) {
-                new Score(name, score, false);
-            } else {
-                new Score(name, score, true);
-            }
         } else {
             if (HangmanUtils.getCurrentImageIndex() == 0 && HangmanUtils.getIsReset()) {
                 HangmanUtils.setIsReset();
+                new Score(name, score, false, count);
                 count = 0;
                 eraseCount = 2;
                 setVisible(false);
-                new Score(name, score, false);
                 return;
             }
             count++;

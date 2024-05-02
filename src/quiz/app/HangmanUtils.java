@@ -43,4 +43,8 @@ public class HangmanUtils {
     public static int getCurrentImageIndex() {
         return currentImageIndex;
     }
+
+    public static void resetImageIndex(){
+        currentImageIndex = 0;
+    }
 }

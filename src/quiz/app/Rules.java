@@ -32,7 +32,7 @@ public class Rules extends JFrame implements ActionListener {
                     "6. You can't submit before commiting all ques." + "<br><br>" +
                 "<html>");
         rules.setBounds(70,160,1200,450);
-        rules.setFont(new Font("Tohama", Font.PLAIN, 20));
+        rules.setFont(new Font("Consolas", Font.PLAIN, 20));
         rules.setForeground(CommonConstants.RICH_BLACK);
         add(rules);
 
@@ -67,11 +67,11 @@ public class Rules extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == start){
-            setVisible(false);
             new Quiz(name);
-        }else {
             setVisible(false);
+        }else {
             new Login();
+            setVisible(false);
         }
     }
 

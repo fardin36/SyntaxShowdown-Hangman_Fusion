@@ -11,19 +11,21 @@ public class ButtonUtils implements MouseListener {
     public static JRadioButton newRadioButton(int y, Color fg, Color bg, int actionCommand) {
         JRadioButton opt = new JRadioButton();
         opt.setBounds(110, y, 1000, 30);
-        opt.setFont(new Font("Dialog", Font.PLAIN, 18));
+        opt.setFont(new Font("Consolas", Font.PLAIN, 18));
         opt.setBackground(bg);
         opt.setForeground(fg);
+        opt.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         opt.setActionCommand(String.valueOf(actionCommand));
         return opt;
     }
 
-    public static JButton newJButton (String text, int x, int y, int width, int height, Color bg, Color fg) {
+    public static JButton newJButton(String text, int x, int y, int width, int height, Color bg, Color fg) {
         JButton newJButton = new JButton(text);
         newJButton.setBounds(x, y, width, height);
         newJButton.setFocusPainted(false);
         newJButton.setBackground(bg);
         newJButton.setForeground(fg);
+        newJButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         return newJButton;
     }
 
@@ -35,6 +37,7 @@ public class ButtonUtils implements MouseListener {
         newJButton.setBorderPainted(false);
         newJButton.setBounds(x, y, width, height);
         newJButton.setContentAreaFilled(false);
+        newJButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 //        newJButton.setBackground(bg);
         return newJButton;
     }
@@ -72,3 +75,5 @@ public class ButtonUtils implements MouseListener {
 
     }
 }
+
+

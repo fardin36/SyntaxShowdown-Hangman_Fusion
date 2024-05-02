@@ -29,8 +29,8 @@ public class Login extends JFrame implements ActionListener {
 //        add(name);
 
         text = new JTextField();
-        text.setBounds(210, 392, 285, 25);
-        text.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        text.setBounds(220, 392, 265, 25);
+        text.setFont(new Font("Arial Black", Font.BOLD, 18));
         text.setBorder(null);
         text.setForeground(CommonConstants.AUREOLIN);
         text.setBackground(CommonConstants.RICH_BLACK);
@@ -69,8 +69,8 @@ public class Login extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == Next) {
             String name = text.getText();
-            setVisible(false);
             new Rules(name);
+            setVisible(false);
         } else if (e.getSource() == back) {
             System.exit(50);
 //            setState(JFrame.ICONIFIED);
