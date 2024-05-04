@@ -8,23 +8,26 @@ public class RetrieveData {
     private static final String username = "root";
     private static final String password = "fardin35";
     //    String[][] questions = new String[15][5];
-    String[][] questions = new String[][]{{
-            "What is the primary purpose of the `public` keyword in Java?", "To hide a member variable or method", "To make a member variable or method accessible from anywhere", "To create a loop", "To handle user input"}, {
-            "What is the correct syntax to declare a primitive integer variable in Java?", "int num = 0;", "Integer num = new Integer(0);", "String num = '0';", "float num = 0.0;"}, {
-            "What is the difference between a `while` loop and a `for` loop in Java? What is the difference between a `while` loop and a `for` loop in Java? What is the difference between a `while` loop and a `for` loop in Java?", "There's no difference, they both do the same thing.", "`while` loop checks the condition before each iteration, `for` loop updates a counter each iteration.", "`while` loop is used for infinite loops, `for` loop is for finite loops.", "`while` loop is for user input, `for` loop is for iterating over collections."}, {
-            "What is the output of the following code: `System.out.println(\"Hello\" + 5);`", "5Hello", "Hello5", "Compilation error", "An infinite loop"}, {
-            "What is the purpose of a `main` method in a Java class?", "To define a constructor for the class", "To define the entry point of a program", "To store global variables", "To handle exceptions"}, {
-            "What is the difference between an interface and an abstract class in Java?", "There's no difference, they both do the same thing.", "An interface defines what a class can do, an abstract class defines how something is done.", "An interface can have methods, an abstract class cannot.", "Interfaces can be inherited, abstract classes cannot."}, {
-            "What is the keyword used to inherit from a class in Java?", "include", "extend", "implement", "use"}, {
-            "What is the difference between a primitive data type and an object in Java?", "There's no difference.", "Primitive data types are basic data types like int and String, objects are instances of classes.", "Primitive data types are stored on the heap, objects are stored on the stack.", "Primitive data types can be null, objects cannot."}, {
-            "What is the difference between a primitive data type and an object in Java?", "There's no difference.", "Primitive data types are basic data types like int and String, objects are instances of classes.", "Primitive data types are stored on the heap, objects are stored on the stack.", "Primitive data types can be null, objects cannot."}, {
-            "What is the difference between a primitive data type and an object in Java?", "There's no difference.", "Primitive data types are basic data types like int and String, objects are instances of classes.", "Primitive data types are stored on the heap, objects are stored on the stack.", "Primitive data types can be null, objects cannot."}, {
-            "What is the difference between an interface and an abstract class in Java?", "There's no difference, they both do the same thing.", "An interface defines what a class can do, an abstract class defines how something is done.", "An interface can have methods, an abstract class cannot.", "Interfaces can be inherited, abstract classes cannot."}, {
-            "What is the keyword used to inherit from a class in Java?", "include", "extend", "implement", "use"}, {
-            "What is the difference between a primitive data type and an object in Java?", "There's no difference.", "Primitive data types are basic data types like int and String, objects are instances of classes.", "Primitive data types are stored on the heap, objects are stored on the stack.", "Primitive data types can be null, objects cannot."}, {
-            "What is the difference between a primitive data type and an object in Java?", "There's no difference.", "Primitive data types are basic data types like int and String, objects are instances of classes.", "Primitive data types are stored on the heap, objects are stored on the stack.", "Primitive data types can be null, objects cannot."}, {
-            "What is the difference between a primitive data type and an object in Java?", "There's no difference.", "Primitive data types are basic data types like int and String, objects are instances of classes.", "Primitive data types are stored on the heap, objects are stored on the stack.", "Primitive data types can be null, objects cannot."}
-    };
+    String[][] questions = new String[][]{// Question 1
+            {"What is the result of 5 + 3 * 2?", "A) 10", "B) 11", "C) 13", "D) 16"},
+            // Question 2
+            {"Which keyword is used to define a constant in Java?", "A) final", "B) const", "C) static", "D) let"},
+            // Question 3
+            {"Which of the following is NOT a primitive data type in Java?", "A) int", "B) float", "C) string", "D) boolean"},
+            // Question 4
+            {"What is the superclass of all classes in Java?", "A) Object", "B) Super", "C) Base", "D) Parent"},
+            // Question 5
+            {"What is the output of the following code?\nint x = 10; System.out.println(x > 5 ? \"Yes\" : \"No\");", "A) Yes", "B) No", "C) Compilation error", "D) Runtime error"},
+            // Question 6
+            {"What is the result of the following code?\nint x = 5; int y = x++ + ++x;", "A) 10", "B) 11", "C) 12", "D) 13"},
+            // Question 7
+            {"Which of the following is true about Java interfaces?", "A) Interfaces can contain instance variables.", "B) A class can implement multiple interfaces with conflicting methods.", "C) Interfaces can be instantiated.", "D) Interfaces can contain constructors."},
+            // Question 8
+            {"What is the output of the following code?\nString str1 = \"hello\", str2 = new String(\"hello\");\nSystem.out.println(str1 == str2);", "A) true", "B) false", "C) Compilation error", "D) Runtime error"},
+            // Question 9
+            {"Which of the following is NOT a Java keyword?", "A) class", "B) struct", "C) interface", "D) extends"},
+            // Question 10
+            {"What is the output of the following code?\nint[] arr = {1, 2, 3}; System.out.println(arr);", "A) 1 2 3", "B) [1, 2, 3]", "C) Memory address of arr", "D) Compilation error"}};
     int[] answers = new int[]{2,1,2,2,2,2,2,2,2,2,2,2,2,2,2};
 
     public RetrieveData(int numQuestions) {
