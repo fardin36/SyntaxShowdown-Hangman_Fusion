@@ -32,30 +32,30 @@ public class Quiz extends JFrame implements ActionListener {
         qno = new JLabel();
         qno.setBounds(80, 300, 1140, 70);
         qno.setFont(new Font("Consolas", Font.PLAIN, 24));
-        qno.setForeground(CommonConstants.RICH_BLACK);
+        qno.setForeground(CommonConstants.PINK);
         add(qno);
 
         question = new JLabel();
         question.setBounds(120, 300, 1140, 70);
         question.setFont(new Font("Tohama", Font.PLAIN, 20));
-        question.setForeground(CommonConstants.RICH_BLACK);
+        question.setForeground(CommonConstants.PINK);
         add(question);
 
-        opt1 = ButtonUtils.newRadioButton(380, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN, 1);
-        opt2 = ButtonUtils.newRadioButton(410, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN, 2);
-        opt3 = ButtonUtils.newRadioButton(440, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN, 3);
-        opt4 = ButtonUtils.newRadioButton(470, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN, 4);
+        opt1 = ButtonUtils.newRadioButton(380, CommonConstants.PINK, CommonConstants.PURPLE, 1);
+        opt2 = ButtonUtils.newRadioButton(410, CommonConstants.PINK, CommonConstants.PURPLE, 2);
+        opt3 = ButtonUtils.newRadioButton(440, CommonConstants.PINK, CommonConstants.PURPLE, 3);
+        opt4 = ButtonUtils.newRadioButton(470, CommonConstants.PINK, CommonConstants.PURPLE, 4);
         add(opt1);
         add(opt2);
         add(opt3);
         add(opt4);
         group = ButtonUtils.newButtonGroup(opt1, opt2, opt3, opt4);
 
-        next = ButtonUtils.newJButton("Next", 550, 600, 200, 30, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN);
+        next = ButtonUtils.newJButton("Next", 550, 600, 200, 30, CommonConstants.PINK, CommonConstants.PURPLE);
         next.addActionListener(this);
         add(next);
 
-        submit = ButtonUtils.newJButton("Submit", 800, 600, 200, 30, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN);
+        submit = ButtonUtils.newJButton("Submit", 800, 600, 200, 30, CommonConstants.PINK, CommonConstants.PURPLE);
         submit.addActionListener(this);
         submit.setEnabled(false);
         add(submit);
@@ -76,7 +76,7 @@ public class Quiz extends JFrame implements ActionListener {
 
         setSize(1280, 720);
         setLocation(40, 10);
-        getContentPane().setBackground(CommonConstants.AUREOLIN);
+        getContentPane().setBackground(CommonConstants.PURPLE);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -148,7 +148,7 @@ public class Quiz extends JFrame implements ActionListener {
         super.paint(g);
 
         String time = "Time left = " + timer + "seconds";
-        g.setColor(CommonConstants.RICH_BLACK);
+        g.setColor(CommonConstants.PINK);
         g.setFont(new Font("Consolas", Font.BOLD, 25));
         if (timer > 0) {
             g.drawString(time, 950, 200);

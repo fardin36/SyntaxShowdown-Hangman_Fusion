@@ -31,18 +31,18 @@ public class Rules extends JFrame implements ActionListener {
                     "5. You get 10 points on every right ans." + "<br><br>" +
                     "6. You can't submit before commiting all ques." + "<br><br>" +
                 "<html>");
-        rules.setBounds(70,160,1200,450);
+        rules.setBounds(70,180,1200,450);
         rules.setFont(new Font("Consolas", Font.PLAIN, 20));
-        rules.setForeground(CommonConstants.RICH_BLACK);
+        rules.setForeground(CommonConstants.PINK);
         add(rules);
 
-        back = ButtonUtils.newJButton("Back", 450, 580, 120, 25, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN);
-        back.setBorder(BorderFactory.createLineBorder(CommonConstants.RICH_BLACK, 2));
+        back = ButtonUtils.newJButton("Back", 450, 580, 120, 25, CommonConstants.PINK, CommonConstants.PURPLE);
+        back.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
         back.addActionListener(this);
         add(back);
 
-        start = ButtonUtils.newJButton("Start", 590, 580, 120, 25, CommonConstants.AUREOLIN, CommonConstants.RICH_BLACK);
-        start.setBorder(BorderFactory.createLineBorder(CommonConstants.RICH_BLACK, 2));
+        start = ButtonUtils.newJButton("Start", 590, 580, 120, 25, CommonConstants.PURPLE, CommonConstants.PINK);
+        start.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
         start.addActionListener(this);
         add(start);
 

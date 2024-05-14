@@ -32,18 +32,18 @@ public class Login extends JFrame implements ActionListener {
         text.setBounds(220, 392, 265, 25);
         text.setFont(new Font("Arial Black", Font.BOLD, 18));
         text.setBorder(null);
-        text.setForeground(CommonConstants.AUREOLIN);
-        text.setBackground(CommonConstants.RICH_BLACK);
-        text.setCaretColor(CommonConstants.AUREOLIN);
+        text.setForeground(CommonConstants.PURPLE);
+        text.setBackground(CommonConstants.PINK);
+        text.setCaretColor(CommonConstants.PURPLE);
         add(text);
 
-        Next = ButtonUtils.newJButton("Next", 360, 450, 120, 25, CommonConstants.AUREOLIN, CommonConstants.RICH_BLACK);
-        Next.setBorder(BorderFactory.createLineBorder(CommonConstants.RICH_BLACK, 2));
+        Next = ButtonUtils.newJButton("Next", 360, 450, 120, 25, CommonConstants.PURPLE, CommonConstants.PINK);
+        Next.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
         Next.addActionListener(this);
         add(Next);
 
-        back = ButtonUtils.newJButton("Back", 220, 450, 120, 25, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN);
-        back.setBorder(BorderFactory.createLineBorder(CommonConstants.RICH_BLACK, 2));
+        back = ButtonUtils.newJButton("Back", 220, 450, 120, 25, CommonConstants.PINK, CommonConstants.PURPLE);
+        back.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
         back.addActionListener(this);
         add(back);
 
@@ -56,7 +56,7 @@ public class Login extends JFrame implements ActionListener {
 
         setSize(1280, 720);
         setLocation(40, 10);
-        getContentPane().setBackground(CommonConstants.EBONY);
+        getContentPane().setBackground(CommonConstants.PURPLE);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);

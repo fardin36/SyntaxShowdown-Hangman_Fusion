@@ -38,18 +38,18 @@ public class Score extends JFrame implements ActionListener {
 //        add(heading2);
 
         right = new JLabel(String.valueOf(score));
-        right.setBounds(1090, 365, 300, 50);
+        right.setBounds(1040, 385, 300, 50);
         right.setFont(new Font("Consolas", Font.BOLD, 50));
-        right.setForeground(CommonConstants.RICH_BLACK);
+        right.setForeground(CommonConstants.PINK);
         add(right);
 
         wrong = new JLabel(String.valueOf(count-score));
-        wrong.setBounds(1050, 410, 300, 50);
+        wrong.setBounds(1075, 450, 300, 50);
         wrong.setFont(new Font("Consolas", Font.BOLD, 50));
-        wrong.setForeground(CommonConstants.RICH_BLACK);
+        wrong.setForeground(CommonConstants.PINK);
         add(wrong);
 
-        exit = ButtonUtils.newJButton("Next", 580, 620, 120, 30, CommonConstants.RICH_BLACK, CommonConstants.AUREOLIN);
+        exit = ButtonUtils.newJButton("Next", 580, 620, 120, 30, CommonConstants.PINK, CommonConstants.PURPLE);
         exit.addActionListener(this);
         add(exit);
 

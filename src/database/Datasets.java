@@ -318,8 +318,4 @@ public class Datasets {
                     "3"
             }
     };
-
-    public static void main(String[] args) {
-
-    }
 }
