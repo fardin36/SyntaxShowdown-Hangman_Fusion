@@ -27,8 +27,18 @@ public class RetrieveData {
             // Question 9
             {"Which of the following is NOT a Java keyword?", "A) class", "B) struct", "C) interface", "D) extends"},
             // Question 10
-            {"What is the output of the following code?\nint[] arr = {1, 2, 3}; System.out.println(arr);", "A) 1 2 3", "B) [1, 2, 3]", "C) Memory address of arr", "D) Compilation error"}};
-    int[] answers = new int[]{2,1,2,2,2,2,2,2,2,2,2,2,2,2,2};
+            {"What is the output of the following code?\nint[] arr = {1, 2, 3}; System.out.println(arr);", "A) 1 2 3", "B) [1, 2, 3]", "C) Memory address of arr", "D) Compilation error"},
+            // Question 11
+            {"What does the 'static' keyword mean in Java?", "A) A variable or method belongs to the class, rather than instances of the class.", "B) A variable or method can only be accessed within the same package.", "C) A variable or method is accessible from anywhere in the program.", "D) A variable or method cannot be overridden."},
+            // Question 12
+            {"What is the purpose of the 'final' keyword in Java?", "A) It indicates that a variable cannot be changed after initialization.", "B) It indicates that a class cannot be extended.", "C) It indicates that a method cannot be overridden.", "D) All of the above."},
+            // Question 13
+            {"Which collection class allows you to associate a unique key with each value?", "A) ArrayList", "B) LinkedList", "C) HashMap", "D) TreeSet"},
+            // Question 14
+            {"What is the output of the following code?\nint x = 10; System.out.println(x < 5 ? \"Yes\" : \"No\");", "A) Yes", "B) No", "C) Compilation error", "D) Runtime error"},
+            // Question 15
+            {"What is the output of the following code?\nString str = null; System.out.println(str.length());", "A) null", "B) 0", "C) Compilation error", "D) Runtime error"}};
+    int[] answers = new int[]{2, 1, 3, 1, 1, 3, 2, 2, 2, 3, 1, 4, 3, 2, 4};
 
     public RetrieveData(int numQuestions) {
         try {
