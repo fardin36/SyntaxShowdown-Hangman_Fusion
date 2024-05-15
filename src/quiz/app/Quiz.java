@@ -15,10 +15,11 @@ public class Quiz extends JFrame implements ActionListener {
     ButtonGroup group;
     JButton next, submit, blast, erase;
 
-    public static int timer = 15, ans_given = 0, count = 0, score = 0, eraseCount = 2;
+    public static int timer = 15, ans_given = 0, count = 0, score = 0, eraseCount = 0, rightCount = 0;
     String name;
     String[][] questions;
     int[] answers;
+    HangmanUtils newHangman = new HangmanUtils();
 
     Quiz(String name) {
         super("Syntax Showdown : Hangman Fusion");
@@ -27,7 +28,7 @@ public class Quiz extends JFrame implements ActionListener {
         questions = retrieveData.getQuestions();
         answers = retrieveData.getAnswers();
 
-        add(HangmanUtils.addHang());
+        add(newHangman.addHang());
 
         qno = new JLabel();
         qno.setBounds(80, 300, 1140, 70);
@@ -63,7 +64,7 @@ public class Quiz extends JFrame implements ActionListener {
         erase = ButtonUtils.newJButton("icons/erase.png", 50, 50, 100, 100);
         erase.addActionListener(this);
         erase.setEnabled(false);
-//        erase.setVisible(false);
+        erase.setVisible(false);
         add(erase);
 
 
@@ -90,29 +91,6 @@ public class Quiz extends JFrame implements ActionListener {
         if (e.getSource() == next) {
             repaint();
             update();
-//            opt1.setEnabled(true);
-//            opt2.setEnabled(true);
-//            opt3.setEnabled(true);
-//            opt4.setEnabled(true);
-//            ans_given = 1;
-//            checkSelection();
-//            if (count > 0 && HangmanUtils.getCurrentImageIndex() > 1) {
-//                erase.setEnabled(true);
-//            }
-//            if (count == 8) {
-//                next.setEnabled(false);
-//                submit.setEnabled(true);
-//            }
-//            if (HangmanUtils.getCurrentImageIndex() == 0 && HangmanUtils.getIsReset()) {
-//                HangmanUtils.setIsReset();
-//                count = 0;
-//                eraseCount = 2;
-//                setVisible(false);
-//                new Score(name, score, false);
-//                return;
-//            }
-//            count++;
-//            start(count);
         } else if (e.getSource() == blast) {
             if (answers[count] == 1 || answers[count] == 3) {
                 opt2.setEnabled(false);
@@ -122,24 +100,15 @@ public class Quiz extends JFrame implements ActionListener {
                 opt3.setEnabled(false);
             }
             blast.setEnabled(false);
+            blast.setVisible(false);
         } else if (e.getSource() == erase) {
             eraseCount--;
             if (eraseCount == 0) {
-                eraseCount = -1;
                 erase.setEnabled(false);
+                erase.setVisible(false);
             }
-            HangmanUtils.undoUpdateImage();
+            newHangman.undoUpdateImage();
         } else if (e.getSource() == submit) {
-//            ans_given = 1;
-//            checkSelection();
-//            count = 0;
-//            eraseCount = 2;
-//            setVisible(false);
-//            if (HangmanUtils.getCurrentImageIndex() == 0) {
-//                new Score(name, score, false);
-//            } else {
-//                new Score(name, score, true);
-//            }
             update();
         }
     }
@@ -170,52 +139,21 @@ public class Quiz extends JFrame implements ActionListener {
         } else if (timer < 0) {
             timer = 15;
             update();
-//            opt1.setEnabled(true);
-//            opt2.setEnabled(true);
-//            opt3.setEnabled(true);
-//            opt4.setEnabled(true);
-//            ans_given = 1;
-//            checkSelection();
-//            if (count > 0 && HangmanUtils.getCurrentImageIndex() > 1) {
-//                erase.setEnabled(true);
-//            }
-//            if (count == 8) {
-//                next.setEnabled(false);
-//                submit.setEnabled(true);
-//            }
-//            if (count == 9) {
-//                count = 0;
-//                eraseCount = 2;
-//                setVisible(false);
-//                if (HangmanUtils.getCurrentImageIndex() == 0) {
-//                    new Score(name, score, false);
-//                } else {
-//                    new Score(name, score, true);
-//                }
-//            } else {
-//                if (HangmanUtils.getCurrentImageIndex() == 0 && HangmanUtils.getIsReset()) {
-//                    HangmanUtils.setIsReset();
-//                    count = 0;
-//                    eraseCount = 2;
-//                    setVisible(false);
-//                    new Score(name, score, false);
-//                    return;
-//                }
-//                count++;
-//                start(count);
-//            }
         }
     }
 
     public void checkSelection() {
         if (group.getSelection() == null) {
-            HangmanUtils.updateImage();
+            rightCount = 0;
+            newHangman.updateImage();
         } else {
             if (group.getSelection().getActionCommand().equals(String.valueOf(answers[count]))) {
                 score++;
+                rightCount++;
             } else {
                 // Hangman Utils
-                HangmanUtils.updateImage();
+                rightCount = 0;
+                newHangman.updateImage();
             }
         }
     }
@@ -227,27 +165,31 @@ public class Quiz extends JFrame implements ActionListener {
         opt4.setEnabled(true);
         ans_given = 1;
         checkSelection();
-        if (count > 0 && HangmanUtils.getCurrentImageIndex() > 1 && eraseCount >= 0) {
+        if (rightCount != 0 && rightCount % 5 == 0){
+            eraseCount++;
+        }
+        if (count > 0 && newHangman.getCurrentImageIndex() > 0 && eraseCount > 0) {
             erase.setEnabled(true);
+            erase.setVisible(true);
         }
         if (count == 8) {
             next.setEnabled(false);
             submit.setEnabled(true);
         }
-        if (count == 9) {
-            if (HangmanUtils.getIsReset()) {
-                HangmanUtils.setIsReset();
+        if (count == 14) {
+            if (newHangman.getIsReset()) {
+                newHangman.setIsReset();
                 new Score(name, score, false, count);
             } else {
-                HangmanUtils.resetImageIndex();
+                newHangman.resetImageIndex();
                 new Score(name, score, true, count);
             }
             count = 0;
-            eraseCount = 2;
+            eraseCount = 0;
             setVisible(false);
         } else {
-            if (HangmanUtils.getCurrentImageIndex() == 0 && HangmanUtils.getIsReset()) {
-                HangmanUtils.setIsReset();
+            if (newHangman.getCurrentImageIndex() == 0 && newHangman.getIsReset()) {
+                newHangman.setIsReset();
                 new Score(name, score, false, count);
                 count = 0;
                 eraseCount = 2;
@@ -262,15 +204,10 @@ public class Quiz extends JFrame implements ActionListener {
     public void start(int count) {
         qno.setText("<html>" + (count + 1) + ".<html>");
         question.setText("<html>" + questions[count][0] + "<html>");
-
         opt1.setText(questions[count][1]);
-
         opt2.setText(questions[count][2]);
-
         opt3.setText(questions[count][3]);
-
         opt4.setText(questions[count][4]);
-
         group.clearSelection();
     }
 
