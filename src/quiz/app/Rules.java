@@ -9,48 +9,55 @@ import quiz.app.*;
 
 public class Rules extends JFrame implements ActionListener {
 
-    JButton start, back;
+    JButton start, back, minimize, exit, backward;
     String name;
     JLabel heading, rules;
-    Rules(String name){
+
+    Rules(String name) {
         super("Syntax Showdown : Hangman Fusion");
 
         this.name = name;
 
-//        heading = new JLabel("<html>"+"Hello "+ name +"!" +"<br>"+ "Welcome to Syntax Showdown"+"<html>");
-//        heading.setBounds(80,100,700,80);
-//        heading.setFont(new Font("Viner Hand ITC", Font.BOLD, 28));
-//        heading.setForeground(Color.WHITE);
-//        add(heading);
-
-        rules = new JLabel("<html>"+
-                    "1. Participation in the quiz is free and open to all." + "<br><br>" +
-                    "2. There are a total (not sure yet)numbers of questions. " + "<br><br>" +
-                    "3. You only have 15 seconds to answer the question." + "<br><br>" +
-                    "4. You lose 1 part of your man every time you skip." + "<br><br>" +
-                    "5. You get 10 points on every right ans." + "<br><br>" +
-                    "6. You can't submit before commiting all ques." + "<br><br>" +
-                "<html>");
-        rules.setBounds(70,180,1200,450);
+        rules = new JLabel("<html>"
+                + "1. Participation in the quiz is free and open to all." + "<br><br>"
+                + "2. There is a total of 15 questions. " + "<br><br>"
+                + "3. You only have 15 seconds to answer the question." + "<br><br>"
+                + "4. You lose 1 part of your man every time you answer wrong/skip." + "<br><br>"
+                + "5. You get 1 points on every right answer."
+                + "<br><br>" + "6. You get 1 bonus point for 5 consecutive right answers." + "<br><br>"
+                + "7. You can't submit before commiting all questions." + "<br><br>"
+                + "<html>"
+        );
+        rules.setBounds(70, 210, 1200, 450);
         rules.setFont(new Font("Consolas", Font.PLAIN, 20));
         rules.setForeground(CommonConstants.PINK);
         add(rules);
 
-        back = ButtonUtils.newJButton("Back", 450, 580, 120, 25, CommonConstants.PINK, CommonConstants.PURPLE);
+        back = ButtonUtils.newJButton("Back", 450, 610, 120, 25, CommonConstants.PINK, CommonConstants.PURPLE);
         back.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
         back.addActionListener(this);
         add(back);
 
-        start = ButtonUtils.newJButton("Start", 590, 580, 120, 25, CommonConstants.PURPLE, CommonConstants.PINK);
+        start = ButtonUtils.newJButton("Start", 590, 610, 120, 25, CommonConstants.PURPLE, CommonConstants.PINK);
         start.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
         start.addActionListener(this);
         add(start);
 
+        minimize = ToolBarUtils.minBtn();
+        minimize.addActionListener(this);
+        add(minimize);
+
+        exit = ToolBarUtils.exitBtn();
+        exit.addActionListener(this);
+        add(exit);
+
+        backward = ToolBarUtils.backBtn();
+        backward.addActionListener(this);
+        add(backward);
+
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/rules.png"));
-//        Image i = i1.getImage().getScaledInstance(1280,650,Image.SCALE_DEFAULT);
-//        ImageIcon i2 = new ImageIcon(i);
         JLabel image = new JLabel(i1);
-        image.setBounds(0,0,1280,720);
+        image.setBounds(0, 0, 1280, 720);
         add(image);
 
         setSize(1280, 720);
@@ -60,18 +67,22 @@ public class Rules extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setLayout(null);
         setResizable(false);
-//        setUndecorated(true);
+        setUndecorated(true);
         setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == start){
+        if (e.getSource() == start) {
             new Quiz(name);
             setVisible(false);
-        }else {
+        } else if (e.getSource() == back || e.getSource() == backward) {
             new Login();
             setVisible(false);
+        } else if (e.getSource() == minimize) {
+            setState(JFrame.ICONIFIED);
+        } else if (e.getSource() == exit) {
+            System.exit(50);
         }
     }
 

@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 
 import quiz.app.CommonConstants.*;
 
-public class ButtonUtils implements MouseListener {
+public class ButtonUtils {
     public static JRadioButton newRadioButton(int y, Color fg, Color bg, int actionCommand) {
         JRadioButton opt = new JRadioButton();
         opt.setBounds(110, y, 1000, 30);
@@ -26,6 +26,7 @@ public class ButtonUtils implements MouseListener {
         newJButton.setBackground(bg);
         newJButton.setForeground(fg);
         newJButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+//        newJButton.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
         return newJButton;
     }
 
@@ -48,31 +49,6 @@ public class ButtonUtils implements MouseListener {
             group1.add(button);
         }
         return group1;
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 }
 

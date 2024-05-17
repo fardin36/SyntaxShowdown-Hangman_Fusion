@@ -13,7 +13,7 @@ public class Quiz extends JFrame implements ActionListener {
     JLabel qno, question;
     JRadioButton opt1, opt2, opt3, opt4;
     ButtonGroup group;
-    JButton next, submit, blast, erase;
+    JButton next, submit, blast, erase, minimize, exit, backward;
 
     public static int timer = 15, ans_given = 0, count = 0, score = 0, eraseCount = 0, rightCount = 0;
     String name;
@@ -31,32 +31,32 @@ public class Quiz extends JFrame implements ActionListener {
         add(newHangman.addHang());
 
         qno = new JLabel();
-        qno.setBounds(80, 300, 1140, 70);
+        qno.setBounds(80, 320, 40, 110);
         qno.setFont(new Font("Consolas", Font.PLAIN, 24));
         qno.setForeground(CommonConstants.PINK);
         add(qno);
 
         question = new JLabel();
-        question.setBounds(120, 300, 1140, 70);
+        question.setBounds(120, 320, 1140, 110);
         question.setFont(new Font("Tohama", Font.PLAIN, 20));
         question.setForeground(CommonConstants.PINK);
         add(question);
 
-        opt1 = ButtonUtils.newRadioButton(380, CommonConstants.PINK, CommonConstants.PURPLE, 1);
-        opt2 = ButtonUtils.newRadioButton(410, CommonConstants.PINK, CommonConstants.PURPLE, 2);
-        opt3 = ButtonUtils.newRadioButton(440, CommonConstants.PINK, CommonConstants.PURPLE, 3);
-        opt4 = ButtonUtils.newRadioButton(470, CommonConstants.PINK, CommonConstants.PURPLE, 4);
+        opt1 = ButtonUtils.newRadioButton(380 + 70, CommonConstants.PINK, CommonConstants.PURPLE, 1);
+        opt2 = ButtonUtils.newRadioButton(410 + 70, CommonConstants.PINK, CommonConstants.PURPLE, 2);
+        opt3 = ButtonUtils.newRadioButton(440 + 70, CommonConstants.PINK, CommonConstants.PURPLE, 3);
+        opt4 = ButtonUtils.newRadioButton(470 + 70, CommonConstants.PINK, CommonConstants.PURPLE, 4);
         add(opt1);
         add(opt2);
         add(opt3);
         add(opt4);
         group = ButtonUtils.newButtonGroup(opt1, opt2, opt3, opt4);
 
-        next = ButtonUtils.newJButton("Next", 550, 600, 200, 30, CommonConstants.PINK, CommonConstants.PURPLE);
+        next = ButtonUtils.newJButton("Next", 550, 650, 200, 30, CommonConstants.PINK, CommonConstants.PURPLE);
         next.addActionListener(this);
         add(next);
 
-        submit = ButtonUtils.newJButton("Submit", 800, 600, 200, 30, CommonConstants.PINK, CommonConstants.PURPLE);
+        submit = ButtonUtils.newJButton("Submit", 800, 650, 200, 30, CommonConstants.PINK, CommonConstants.PURPLE);
         submit.addActionListener(this);
         submit.setEnabled(false);
         add(submit);
@@ -73,6 +73,18 @@ public class Quiz extends JFrame implements ActionListener {
 //        blast.setVisible(false);
         add(blast);
 
+        minimize = ToolBarUtils.minBtn();
+        minimize.addActionListener(this);
+        add(minimize);
+
+        exit = ToolBarUtils.exitBtn();
+        exit.addActionListener(this);
+        add(exit);
+
+        backward = ToolBarUtils.backBtn();
+        backward.addActionListener(this);
+        add(backward);
+
         start(count);
 
         setSize(1280, 720);
@@ -82,7 +94,7 @@ public class Quiz extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setLayout(null);
         setResizable(false);
-//        setUndecorated(true);
+        setUndecorated(true);
         setVisible(true);
     }
 
@@ -110,6 +122,13 @@ public class Quiz extends JFrame implements ActionListener {
             newHangman.undoUpdateImage();
         } else if (e.getSource() == submit) {
             update();
+        } else if (e.getSource() == exit) {
+            System.exit(50);
+        } else if (e.getSource() == minimize) {
+            setState(JFrame.ICONIFIED);
+        } else if (e.getSource() == backward) {
+            new Login();
+            setVisible(false);
         }
     }
 
@@ -165,7 +184,7 @@ public class Quiz extends JFrame implements ActionListener {
         opt4.setEnabled(true);
         ans_given = 1;
         checkSelection();
-        if (rightCount != 0 && rightCount % 5 == 0){
+        if (rightCount != 0 && rightCount % 5 == 0) {
             eraseCount++;
         }
         if (count > 0 && newHangman.getCurrentImageIndex() > 0 && eraseCount > 0) {

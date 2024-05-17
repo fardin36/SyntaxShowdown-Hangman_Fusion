@@ -10,23 +10,11 @@ import quiz.app.*;
 public class Login extends JFrame implements ActionListener {
 
     JTextField text;
-    JButton Next, back;
+    JButton Next, back, minimize, exit, backward;
 
     Login() {
         super("Syntax Showdown : Hangman Fusion");
         setLayout(null);
-
-//        JLabel heading = new JLabel("Syntax Showdown");
-//        heading.setBounds(80, 60, 400, 45);
-//        heading.setFont(new Font("Viner Hand ITC", Font.BOLD, 40));
-//        heading.setForeground(CommonConstants.WHITE);
-//        add(heading);
-
-//        JLabel name = new JLabel("Enter Your Name");
-//        name.setBounds(300, 280, 300, 20);
-//        name.setFont(new Font("Mongolian Baiti", Font.BOLD, 18));
-//        name.setForeground(CommonConstants.SLATE);
-//        add(name);
 
         text = new JTextField();
         text.setBounds(220, 392, 265, 25);
@@ -38,14 +26,27 @@ public class Login extends JFrame implements ActionListener {
         add(text);
 
         Next = ButtonUtils.newJButton("Next", 360, 450, 120, 25, CommonConstants.PURPLE, CommonConstants.PINK);
-        Next.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
+//        Next.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
         Next.addActionListener(this);
         add(Next);
 
         back = ButtonUtils.newJButton("Back", 220, 450, 120, 25, CommonConstants.PINK, CommonConstants.PURPLE);
-        back.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
+//        back.setBorder(BorderFactory.createLineBorder(CommonConstants.PINK, 2));
         back.addActionListener(this);
         add(back);
+
+        minimize = ToolBarUtils.minBtn();
+        minimize.addActionListener(this);
+        add(minimize);
+
+        exit = ToolBarUtils.exitBtn();
+        exit.addActionListener(this);
+        add(exit);
+
+        backward = ToolBarUtils.backBtn();
+        backward.addActionListener(this);
+        add(backward);
+
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/login.png"));
         Image i = i1.getImage().getScaledInstance(1280, 720, Image.SCALE_DEFAULT);
@@ -61,7 +62,7 @@ public class Login extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setLayout(null);
         setResizable(false);
-//        setUndecorated(true);
+        setUndecorated(true);
         setVisible(true);
     }
 
@@ -71,9 +72,10 @@ public class Login extends JFrame implements ActionListener {
             String name = text.getText();
             new Rules(name);
             setVisible(false);
-        } else if (e.getSource() == back) {
+        } else if (e.getSource() == back || e.getSource() == exit || e.getSource() == backward) {
             System.exit(50);
-//            setState(JFrame.ICONIFIED);
+        } else if (e.getSource() == minimize) {
+            setState(JFrame.ICONIFIED);
         }
     }
 

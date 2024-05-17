@@ -8,34 +8,17 @@ import java.awt.event.ActionListener;
 import quiz.app.*;
 
 public class Score extends JFrame implements ActionListener {
-    JButton exit;
-    String scorePage = null;
+    JButton exit, minimize, exitBtn;
+    String scorePage;
     JLabel right, wrong;
 
     Score(String name, int score, boolean safe, int count) {
         super("Syntax Showdown : Hangman Fusion");
-        if (safe){
+        if (safe) {
             scorePage = "icons/score1.png";
-        }else{
+        } else {
             scorePage = "icons/score2.png";
         }
-
-//        JLabel heading1, heading2, Score;
-//        if (safe) {
-//            heading1 = new JLabel("You saved me chief!");
-//        } else {
-//            heading1 = new JLabel("You couldn't save the man!");
-//        }
-//        heading1.setBounds(100, 100, 700, 30);
-//        heading1.setFont(new Font("Tahoma", Font.BOLD, 26));
-//        heading1.setForeground(Color.WHITE);
-//        add(heading1);
-
-//        heading2 = new JLabel("Thank You " + name + " for Playing");
-//        heading2.setBounds(100, 150, 700, 30);
-//        heading2.setFont(new Font("Tahoma", Font.BOLD, 26));
-//        heading2.setForeground(Color.WHITE);
-//        add(heading2);
 
         right = new JLabel(String.valueOf(score));
         right.setBounds(1040, 385, 300, 50);
@@ -43,7 +26,7 @@ public class Score extends JFrame implements ActionListener {
         right.setForeground(CommonConstants.PINK);
         add(right);
 
-        wrong = new JLabel(String.valueOf(count-score));
+        wrong = new JLabel(String.valueOf(count - score));
         wrong.setBounds(1075, 450, 300, 50);
         wrong.setFont(new Font("Consolas", Font.BOLD, 50));
         wrong.setForeground(CommonConstants.PINK);
@@ -53,12 +36,13 @@ public class Score extends JFrame implements ActionListener {
         exit.addActionListener(this);
         add(exit);
 
-//        ImageIcon ii1 = new ImageIcon(ClassLoader.getSystemResource("icons/back.png"));
-//        Image ii2 = ii1.getImage().getScaledInstance(750, 550, Image.SCALE_DEFAULT);
-//        ImageIcon ii3 = new ImageIcon(ii2);
-//        JLabel iimage = new JLabel(ii3);
-//        iimage.setBounds(-10, -15, 750, 550);
-//        add(iimage);
+        minimize = ToolBarUtils.minBtn();
+        minimize.addActionListener(this);
+        add(minimize);
+
+        exitBtn = ToolBarUtils.exitBtn();
+        exitBtn.addActionListener(this);
+        add(exitBtn);
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(scorePage));
         Image i2 = i1.getImage().getScaledInstance(1280, 720, Image.SCALE_DEFAULT);
@@ -74,7 +58,7 @@ public class Score extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setLayout(null);
         setResizable(false);
-//        setUndecorated(true);
+        setUndecorated(true);
         setVisible(true);
     }
 
@@ -87,6 +71,10 @@ public class Score extends JFrame implements ActionListener {
         if (e.getSource() == exit) {
             new Login();
             setVisible(false);
+        } else if (e.getSource() == exitBtn) {
+            System.exit(50);
+        } else if (e.getSource() == minimize) {
+            setState(JFrame.ICONIFIED);
         }
     }
 }
